@@ -78,6 +78,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B096611244E2F8500FB4A68 /* Jaheed */ = {
+			isa = PBXGroup;
+			children = (
+				0B712A72244DEB94004FD62B /* FeedViewController.swift */,
+				0B09660F244E29ED00FB4A68 /* DetailViewController.swift */,
+			);
+			path = Jaheed;
+			sourceTree = "<group>";
+		};
+		0B096612244E2F9200FB4A68 /* Chelsi */ = {
+			isa = PBXGroup;
+			children = (
+				0B09660B244E29B100FB4A68 /* EventViewController.swift */,
+			);
+			path = Chelsi;
+			sourceTree = "<group>";
+		};
+		0B096613244E2F9B00FB4A68 /* Matthew */ = {
+			isa = PBXGroup;
+			children = (
+				0B09660D244E29C600FB4A68 /* FavoriteViewController.swift */,
+			);
+			path = Matthew;
+			sourceTree = "<group>";
+		};
+		0B096614244E2FA400FB4A68 /* Ahad */ = {
+			isa = PBXGroup;
+			children = (
+				0B096609244E298700FB4A68 /* ProfileViewController.swift */,
+			);
+			path = Ahad;
+			sourceTree = "<group>";
+		};
 		0B712A62244DEB94004FD62B = {
 			isa = PBXGroup;
 			children = (
@@ -104,11 +137,10 @@
 				0B712A90244E0565004FD62B /* GoogleService-Info.plist */,
 				0B712A6E244DEB94004FD62B /* AppDelegate.swift */,
 				0B712A70244DEB94004FD62B /* SceneDelegate.swift */,
-				0B712A72244DEB94004FD62B /* FeedViewController.swift */,
-				0B09660B244E29B100FB4A68 /* EventViewController.swift */,
-				0B09660D244E29C600FB4A68 /* FavoriteViewController.swift */,
-				0B09660F244E29ED00FB4A68 /* DetailViewController.swift */,
-				0B096609244E298700FB4A68 /* ProfileViewController.swift */,
+				0B096611244E2F8500FB4A68 /* Jaheed */,
+				0B096612244E2F9200FB4A68 /* Chelsi */,
+				0B096613244E2F9B00FB4A68 /* Matthew */,
+				0B096614244E2FA400FB4A68 /* Ahad */,
 				0B096607244E297600FB4A68 /* TabController.swift */,
 				0B712A77244DEB97004FD62B /* Assets.xcassets */,
 				0B712A79244DEB97004FD62B /* LaunchScreen.storyboard */,
