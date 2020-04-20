@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileView: UIView {
     
-    public lazy var viewImage: UIImageView = {
+    public lazy var imageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .systemOrange
         iv.contentMode = .scaleAspectFill
@@ -24,11 +24,34 @@ class ProfileView: UIView {
         return v
     }()
     
-    private lazy var cityLabel: UIView = {
+    private lazy var titleLabel: UIView = {
        let l = UILabel()
         l.text = "City"
-        l.font = UIFont.preferredFont(forTextStyle: .headline).withSize(20)
+        l.font = UIFont.preferredFont(forTextStyle: .headline).withSize(48)
         return l
+    }()
+    
+    private lazy var cityLabel: UILabel = {
+        let l = UILabel()
+        l.text = "NYC"
+        l.textAlignment = .center
+        l.font = l.font.withSize(24)
+        return l
+    }()
+    
+    private lazy var eventsLabel: UILabel = {
+        let l = UILabel()
+        l.text = "Events"
+        l.font = UIFont.preferredFont(forTextStyle: .headline).withSize(48)
+        return l
+    }()
+    
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .systemGroupedBackground
+        return cv
     }()
     
     init() {
@@ -49,11 +72,11 @@ class ProfileView: UIView {
     }
     
     fileprivate func configureImageLayer() {
-        viewImage.layer.masksToBounds = true
-        viewImage.layer.cornerRadius = 50
-        print(viewImage.layer.cornerRadius)
-        viewImage.layer.borderWidth = 2
-        viewImage.layer.borderColor = UIColor.red.cgColor
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 50
+        print(imageView.layer.cornerRadius)
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.red.cgColor
     }
     
     fileprivate func configureCardLayer() {
@@ -63,16 +86,20 @@ class ProfileView: UIView {
     private func configureView() {
         setupCardView()
         setupViewImage()
+        setupTitleLabel()
+        setupCityLabel()
+        setupEventsLabel()
+        setupCollectionView()
     }
     
     private func setupViewImage() {
-        cardView.addSubview(viewImage)
-        viewImage.translatesAutoresizingMaskIntoConstraints = false
+        cardView.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            viewImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            viewImage.centerYAnchor.constraint(equalTo: cardView.topAnchor),
-            viewImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25),
-            viewImage.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25)])
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: cardView.topAnchor),
+            imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25),
+            imageView.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25)])
     }
     
     private func setupCardView() {
@@ -85,9 +112,41 @@ class ProfileView: UIView {
             cardView.widthAnchor.constraint(equalTo: widthAnchor, constant: -40)])
     }
     
+    private func setupTitleLabel() {
+        cardView.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 12),
+            titleLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)])
+    }
+    
     private func setupCityLabel() {
-        addSubview(cityLabel)
-        
+        cardView.addSubview(cityLabel)
+        cityLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            cityLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            cityLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            cityLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor)])
+    }
+    
+    private func setupEventsLabel() {
+        cardView.addSubview(eventsLabel)
+        eventsLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            eventsLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor),
+            eventsLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            eventsLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor)])
+    }
+    
+    private func setupCollectionView() {
+        cardView.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: eventsLabel.bottomAnchor, constant: 8),
+            collectionView.leadingAnchor.constraint(equalTo: cityLabel.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: cityLabel.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -8)])
     }
     
     
