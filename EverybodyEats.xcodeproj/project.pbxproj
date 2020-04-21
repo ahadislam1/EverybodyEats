@@ -22,6 +22,10 @@
 		0B712A7B244DEB97004FD62B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B712A79244DEB97004FD62B /* LaunchScreen.storyboard */; };
 		0B712A86244DEB97004FD62B /* EverybodyEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B712A85244DEB97004FD62B /* EverybodyEatsTests.swift */; };
 		0B712A91244E0565004FD62B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B712A90244E0565004FD62B /* GoogleService-Info.plist */; };
+		0BCADC13244E8307002EB913 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC12244E8307002EB913 /* User.swift */; };
+		0BCADC15244E8462002EB913 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC14244E8462002EB913 /* Event.swift */; };
+		0BCADC17244E84F8002EB913 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC16244E84F8002EB913 /* Post.swift */; };
+		0BCADC19244E8575002EB913 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC18244E8575002EB913 /* Like.swift */; };
 		96C553B2A46B11F38315E338 /* Pods_EverybodyEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168A8C042D768CFA07555BF5 /* Pods_EverybodyEats.framework */; };
 		B3A3225093B9F7BA819165BA /* Pods_EverybodyEatsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC26D6E78BFF791436099A2 /* Pods_EverybodyEatsTests.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +61,10 @@
 		0B712A85244DEB97004FD62B /* EverybodyEatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverybodyEatsTests.swift; sourceTree = "<group>"; };
 		0B712A87244DEB97004FD62B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B712A90244E0565004FD62B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0BCADC12244E8307002EB913 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0BCADC14244E8462002EB913 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		0BCADC16244E84F8002EB913 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		0BCADC18244E8575002EB913 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		15822ACD2A77028FE698AC97 /* Pods-EverybodyEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEats.release.xcconfig"; path = "Target Support Files/Pods-EverybodyEats/Pods-EverybodyEats.release.xcconfig"; sourceTree = "<group>"; };
 		168A8C042D768CFA07555BF5 /* Pods_EverybodyEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EverybodyEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84903AA73DBEAF787D2F3932 /* Pods-EverybodyEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEats.debug.xcconfig"; path = "Target Support Files/Pods-EverybodyEats/Pods-EverybodyEats.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +162,10 @@
 				0B712A77244DEB97004FD62B /* Assets.xcassets */,
 				0B712A79244DEB97004FD62B /* LaunchScreen.storyboard */,
 				0B712A7C244DEB97004FD62B /* Info.plist */,
+				0BCADC12244E8307002EB913 /* User.swift */,
+				0BCADC14244E8462002EB913 /* Event.swift */,
+				0BCADC16244E84F8002EB913 /* Post.swift */,
+				0BCADC18244E8575002EB913 /* Like.swift */,
 			);
 			path = EverybodyEats;
 			sourceTree = "<group>";
@@ -356,12 +368,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B712A73244DEB94004FD62B /* FeedViewController.swift in Sources */,
+				0BCADC17244E84F8002EB913 /* Post.swift in Sources */,
+				0BCADC15244E8462002EB913 /* Event.swift in Sources */,
+				0BCADC19244E8575002EB913 /* Like.swift in Sources */,
 				0B096616244E3F8600FB4A68 /* ProfileView.swift in Sources */,
 				0B096608244E297600FB4A68 /* TabController.swift in Sources */,
 				0B09660A244E298700FB4A68 /* ProfileViewController.swift in Sources */,
 				0B09660E244E29C600FB4A68 /* FavoriteViewController.swift in Sources */,
 				0B09661A244E521D00FB4A68 /* EventCell.swift in Sources */,
 				0B712A6F244DEB94004FD62B /* AppDelegate.swift in Sources */,
+				0BCADC13244E8307002EB913 /* User.swift in Sources */,
 				0B712A71244DEB94004FD62B /* SceneDelegate.swift in Sources */,
 				0B09660C244E29B100FB4A68 /* EventViewController.swift in Sources */,
 				0B096618244E51D400FB4A68 /* TitleReusableView.swift in Sources */,

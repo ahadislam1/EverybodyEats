@@ -37,7 +37,6 @@ class TabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [feedViewController, eventViewController, favoriteViewController, profileViewController]
-        selectedIndex = 3
     }
     
 }
