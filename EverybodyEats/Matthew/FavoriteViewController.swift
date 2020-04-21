@@ -9,21 +9,50 @@
 import UIKit
 
 class FavoriteViewController: UIViewController {
+    
+    let favoriteView = FavoriteView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
+        favoriteView.collectionView.dataSource = self
+        favoriteView.collectionView.delegate = self
+        favoriteView.collectionView.register(ItemCell.self, forCellWithReuseIdentifier: "itemCell")
+        view = favoriteView
+    }
+
+
+}
+
+extension FavoriteViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        3
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as? ItemCell else {
+            fatalError("Could not downcast to item cell")
+        }
+        return cell
     }
-    */
+    
+    
+}
 
+extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: 100, height: 100)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+
+    
+    
 }
