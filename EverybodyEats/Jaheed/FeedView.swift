@@ -19,6 +19,8 @@ class FeedView: UIView {
         return collectionView
     }()
     
+    
+    
     public lazy var imageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill

@@ -19,12 +19,15 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemRed
-        feedView.collectionView.delegate = self
-        feedView.collectionView.dataSource = self
+        view.backgroundColor = .systemBackground
+        configureCollectionView()
         
     }
-
+    
+    private func configureCollectionView(){
+        feedView.collectionView.delegate = self
+        feedView.collectionView.dataSource = self
+    }
 
 }
 

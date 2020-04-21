@@ -41,19 +41,14 @@ class PostCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         setupImageView()
-        cellSettings()
+        setUpLikeButton()
+        setUpUserHandle()
+        setUpUserCaption()
         
         
     }
     
     
-    private func cellSettings(){
-        layer.cornerRadius = 5
-        layer.borderColor = UIColor.label.cgColor
-        layer.borderWidth = 5
-        self.clipsToBounds = true
-        self.layer.cornerRadius = 10
-    }
     
     private func setupImageView() {
         contentView.addSubview(imageView)
