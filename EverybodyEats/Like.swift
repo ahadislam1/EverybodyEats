@@ -10,8 +10,8 @@ import Foundation
 
 /// A struct to show how many people "like" an object, and string of users who do.
 struct Like: Codable {
-    var count: Int
-    var favoritedBy: [String]
+    var count = 0
+    var favoritedBy = [String]()
     
     mutating func liked(userID: String) {
         guard !favoritedBy.contains(userID) else {

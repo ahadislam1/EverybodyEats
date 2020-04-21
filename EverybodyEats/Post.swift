@@ -14,5 +14,5 @@ struct Post: Codable {
     let imageData: Data?
     let description: String
     let createdBy: String
-    let likes: Like
+    let likes = Like()
 }

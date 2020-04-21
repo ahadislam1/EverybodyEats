@@ -14,5 +14,5 @@ struct Event: Codable {
     let imageData: Data?
     let description: String
     let createdBy: String
-    let likes: Like
+    let likes = Like()
 }
