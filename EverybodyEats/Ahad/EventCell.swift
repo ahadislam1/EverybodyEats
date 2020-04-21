@@ -12,13 +12,17 @@ class EventCell: UICollectionViewCell {
     
     private lazy var imageView: UIImageView = {
         let iv = UIImageView()
-        UIImage(systemName: "trash")
+        iv.image = UIImage(systemName: "trash")
         return iv
     }()
     
     override func layoutSubviews() {
         super.layoutSubviews()
         setupImageView()
+        
+        layer.cornerRadius = 5
+        layer.borderColor = UIColor.label.cgColor
+        layer.borderWidth = 5
         
     }
     
@@ -31,7 +35,6 @@ class EventCell: UICollectionViewCell {
             imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 2 / 3),
             imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2 / 3)])
         
-        print(imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2 / 3).multiplier)
     }
     
     

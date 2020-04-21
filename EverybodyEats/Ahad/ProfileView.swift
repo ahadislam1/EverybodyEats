@@ -46,11 +46,13 @@ class ProfileView: UIView {
         return l
     }()
     
-    private lazy var collectionView: UICollectionView = {
+    public lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .systemGroupedBackground
+        cv.register(EventCell.self, forCellWithReuseIdentifier: "eventCell")
+        cv.register(TitleReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "titleView")
         return cv
     }()
     
@@ -74,7 +76,6 @@ class ProfileView: UIView {
     fileprivate func configureImageLayer() {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 50
-        print(imageView.layer.cornerRadius)
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = UIColor.red.cgColor
     }
