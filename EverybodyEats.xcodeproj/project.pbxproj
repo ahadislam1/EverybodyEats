@@ -19,6 +19,10 @@
 		0B712A7B244DEB97004FD62B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B712A79244DEB97004FD62B /* LaunchScreen.storyboard */; };
 		0B712A86244DEB97004FD62B /* EverybodyEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B712A85244DEB97004FD62B /* EverybodyEatsTests.swift */; };
 		0B712A91244E0565004FD62B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B712A90244E0565004FD62B /* GoogleService-Info.plist */; };
+		0C919F6A244E72BB00826E45 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F69244E72BB00826E45 /* FavoriteView.swift */; };
+		0C919F6C244E73E400826E45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F6B244E73E400826E45 /* GoogleService-Info.plist */; };
+		0C919F6E244E770100826E45 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F6D244E770100826E45 /* ItemCell.xib */; };
+		0C919F70244E823100826E45 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F6F244E823100826E45 /* ItemCell.swift */; };
 		96C553B2A46B11F38315E338 /* Pods_EverybodyEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168A8C042D768CFA07555BF5 /* Pods_EverybodyEats.framework */; };
 		B3A3225093B9F7BA819165BA /* Pods_EverybodyEatsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC26D6E78BFF791436099A2 /* Pods_EverybodyEatsTests.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +55,10 @@
 		0B712A85244DEB97004FD62B /* EverybodyEatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverybodyEatsTests.swift; sourceTree = "<group>"; };
 		0B712A87244DEB97004FD62B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B712A90244E0565004FD62B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C919F69244E72BB00826E45 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		0C919F6B244E73E400826E45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C919F6D244E770100826E45 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
+		0C919F6F244E823100826E45 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		15822ACD2A77028FE698AC97 /* Pods-EverybodyEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEats.release.xcconfig"; path = "Target Support Files/Pods-EverybodyEats/Pods-EverybodyEats.release.xcconfig"; sourceTree = "<group>"; };
 		168A8C042D768CFA07555BF5 /* Pods_EverybodyEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EverybodyEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84903AA73DBEAF787D2F3932 /* Pods-EverybodyEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEats.debug.xcconfig"; path = "Target Support Files/Pods-EverybodyEats/Pods-EverybodyEats.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				0B09660D244E29C600FB4A68 /* FavoriteViewController.swift */,
+				0C919F69244E72BB00826E45 /* FavoriteView.swift */,
+				0C919F6D244E770100826E45 /* ItemCell.xib */,
+				0C919F6F244E823100826E45 /* ItemCell.swift */,
 			);
 			path = Matthew;
 			sourceTree = "<group>";
@@ -135,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				0B712A90244E0565004FD62B /* GoogleService-Info.plist */,
+				0C919F6B244E73E400826E45 /* GoogleService-Info.plist */,
 				0B712A6E244DEB94004FD62B /* AppDelegate.swift */,
 				0B712A70244DEB94004FD62B /* SceneDelegate.swift */,
 				0B096611244E2F8500FB4A68 /* Jaheed */,
@@ -263,6 +275,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B712A7B244DEB97004FD62B /* LaunchScreen.storyboard in Resources */,
+				0C919F6C244E73E400826E45 /* GoogleService-Info.plist in Resources */,
+				0C919F6E244E770100826E45 /* ItemCell.xib in Resources */,
 				0B712A91244E0565004FD62B /* GoogleService-Info.plist in Resources */,
 				0B712A78244DEB97004FD62B /* Assets.xcassets in Resources */,
 			);
@@ -350,9 +364,11 @@
 				0B096608244E297600FB4A68 /* TabController.swift in Sources */,
 				0B09660A244E298700FB4A68 /* ProfileViewController.swift in Sources */,
 				0B09660E244E29C600FB4A68 /* FavoriteViewController.swift in Sources */,
+				0C919F70244E823100826E45 /* ItemCell.swift in Sources */,
 				0B712A6F244DEB94004FD62B /* AppDelegate.swift in Sources */,
 				0B712A71244DEB94004FD62B /* SceneDelegate.swift in Sources */,
 				0B09660C244E29B100FB4A68 /* EventViewController.swift in Sources */,
+				0C919F6A244E72BB00826E45 /* FavoriteView.swift in Sources */,
 				0B096610244E29ED00FB4A68 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
