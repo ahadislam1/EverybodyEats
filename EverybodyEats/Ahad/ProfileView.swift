@@ -10,8 +10,6 @@ import UIKit
 
 protocol ProfileViewDelegate: AnyObject {
     func didPressButton()
-    func didPressCityEditButton()
-    func didPressDisplayEditButton()
 }
 
 class ProfileView: UIView {
@@ -29,20 +27,6 @@ class ProfileView: UIView {
         b.setImage(UIImage(systemName: "plus"), for: .normal)
         b.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         b.backgroundColor = .systemOrange
-        return b
-    }()
-    
-    private lazy var cityEditButton: UIButton = {
-        let b = UIButton()
-        b.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
-        b.addTarget(self, action: #selector(cityEditButtonPressed), for: .touchUpInside)
-        return b
-    }()
-    
-    private lazy var displayEditButton: UIButton = {
-        let b = UIButton()
-        b.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
-        b.addTarget(self, action: #selector(cityEditButtonPressed), for: .touchUpInside)
         return b
     }()
     
@@ -116,16 +100,6 @@ class ProfileView: UIView {
         delegate?.didPressButton()
     }
     
-    @objc
-    private func cityEditButtonPressed() {
-        delegate?.didPressCityEditButton()
-    }
-    
-    @objc
-    private func displayEditButtonPressed() {
-        delegate?.didPressDisplayEditButton()
-    }
-    
     fileprivate func configureImageLayer() {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.bounds.width / 2
@@ -153,8 +127,6 @@ class ProfileView: UIView {
         setupEventsLabel()
         setupCollectionView()
         setupButton()
-        setupCityButton()
-        setupDisplayButton()
     }
     
     private func setupImageView() {
@@ -231,25 +203,6 @@ class ProfileView: UIView {
             button.leadingAnchor.constraint(equalTo: imageView.trailingAnchor),
             button.widthAnchor.constraint(equalToConstant: 30),
             button.heightAnchor.constraint(equalToConstant: 30)])
-    }
-    
-    private func setupCityButton() {
-        cardView.addSubview(cityEditButton)
-        cityEditButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            cityEditButton.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            cityEditButton.topAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            cityEditButton.heightAnchor.constraint(equalToConstant: 20),
-            cityEditButton.widthAnchor.constraint(equalToConstant: 20)])
-    }
-    
-    private func setupDisplayButton() {
-        cardView.addSubview(displayEditButton)
-        displayEditButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            displayEditButton.leadingAnchor.constraint(equalTo: displayLabel.trailingAnchor),
-            displayEditButton.centerYAnchor.constraint(equalTo: displayLabel.centerYAnchor, constant: 5),
-            displayEditButton.bottomAnchor.constraint(equalTo: displayLabel.bottomAnchor)])
     }
     
     
