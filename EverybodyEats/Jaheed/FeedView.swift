@@ -6,6 +6,11 @@
 //  Copyright © 2020 Ahad Islam. All rights reserved.
 //
 
+
+
+
+/*
+ 
 import UIKit
 
 class FeedView: UIView {
@@ -79,7 +84,9 @@ class FeedView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            
+            imageView.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, constant: 10),
+            imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10)
         ])
     }
     
@@ -115,4 +122,6 @@ class FeedView: UIView {
     
     
     
-}
+ }
+ 
+ */

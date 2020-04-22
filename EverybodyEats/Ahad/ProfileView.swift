@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol ProfileViewDelegate: AnyObject {
+    func didPressButton()
+    func didPressEditButton()
+}
+
 class ProfileView: UIView {
     
     public lazy var imageView: UIImageView = {
@@ -18,20 +23,45 @@ class ProfileView: UIView {
         return iv
     }()
     
+    private lazy var button: UIButton = {
+        let b = UIButton()
+        b.setImage(UIImage(systemName: "plus"), for: .normal)
+        b.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        b.backgroundColor = .systemOrange
+        return b
+    }()
+    
+    private lazy var editProfileButton: UIButton = {
+        let b = UIButton()
+        b.setTitle("Edit Profile", for: .normal)
+        b.setTitleColor(.systemBlue, for: .normal)
+        b.setTitleColor(.systemBackground, for: .highlighted)
+        b.addTarget(self, action: #selector(profileButtonPressed), for: .touchUpInside)
+        return b
+    }()
+    
     private lazy var cardView: UIView = {
         let v = UIView()
         v.backgroundColor = .systemPink
         return v
     }()
     
-    private lazy var titleLabel: UIView = {
+    private lazy var titleLabel: UILabel = {
        let l = UILabel()
         l.text = "City"
         l.font = UIFont.preferredFont(forTextStyle: .headline).withSize(48)
         return l
     }()
     
-    private lazy var cityLabel: UILabel = {
+    public lazy var displayLabel: UILabel = {
+        let l = UILabel()
+        l.text = "Display Name"
+        l.textAlignment = .center
+        l.font = UIFont.preferredFont(forTextStyle: .largeTitle).withSize(36)
+        return l
+    }()
+    
+    public lazy var cityLabel: UILabel = {
         let l = UILabel()
         l.text = "NYC"
         l.textAlignment = .center
@@ -52,9 +82,10 @@ class ProfileView: UIView {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .systemGroupedBackground
         cv.register(EventCell.self, forCellWithReuseIdentifier: "eventCell")
-        cv.register(TitleReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "titleView")
         return cv
     }()
+    
+    public weak var delegate: ProfileViewDelegate?
     
     init() {
         super.init(frame: .zero)
@@ -71,11 +102,22 @@ class ProfileView: UIView {
         
         configureCardLayer()
         configureImageLayer()
+        configureButtonLayer()
+    }
+    
+    @objc
+    private func buttonPressed() {
+        delegate?.didPressButton()
+    }
+    
+    @objc
+    private func profileButtonPressed() {
+        delegate?.didPressEditButton()
     }
     
     fileprivate func configureImageLayer() {
         imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = 50
+        imageView.layer.cornerRadius = imageView.bounds.width / 2
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = UIColor.red.cgColor
     }
@@ -84,23 +126,33 @@ class ProfileView: UIView {
         cardView.layer.cornerRadius = 12
     }
     
+    fileprivate func configureButtonLayer() {
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = button.bounds.width / 2
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.red.cgColor
+    }
+    
     private func configureView() {
         setupCardView()
-        setupViewImage()
+        setupImageView()
+        setupDisplayLabel()
         setupTitleLabel()
         setupCityLabel()
         setupEventsLabel()
         setupCollectionView()
+        setupButton()
+        setupEditProfileButton()
     }
     
-    private func setupViewImage() {
-        cardView.addSubview(imageView)
+    private func setupImageView() {
+        addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: cardView.topAnchor),
-            imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25),
-            imageView.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25)])
+            imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.175),
+            imageView.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.175)])
     }
     
     private func setupCardView() {
@@ -109,17 +161,26 @@ class ProfileView: UIView {
         NSLayoutConstraint.activate([
             cardView.centerXAnchor.constraint(equalTo: centerXAnchor),
             cardView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            cardView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.69),
+            cardView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.75),
             cardView.widthAnchor.constraint(equalTo: widthAnchor, constant: -40)])
+    }
+    
+    private func setupDisplayLabel() {
+        cardView.addSubview(displayLabel)
+        displayLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            displayLabel.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
+            displayLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+            displayLabel.widthAnchor.constraint(equalToConstant: displayLabel.intrinsicContentSize.width)])
     }
     
     private func setupTitleLabel() {
         cardView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 12),
+            titleLabel.topAnchor.constraint(equalTo: displayLabel.bottomAnchor, constant: 12),
             titleLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)])
+            titleLabel.widthAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.width)])
     }
     
     private func setupCityLabel() {
@@ -128,7 +189,7 @@ class ProfileView: UIView {
         NSLayoutConstraint.activate([
             cityLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             cityLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            cityLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor)])
+            cityLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)])
     }
     
     private func setupEventsLabel() {
@@ -137,7 +198,7 @@ class ProfileView: UIView {
         NSLayoutConstraint.activate([
             eventsLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor),
             eventsLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            eventsLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor)])
+            eventsLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)])
     }
     
     private func setupCollectionView() {
@@ -146,8 +207,26 @@ class ProfileView: UIView {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: eventsLabel.bottomAnchor, constant: 8),
             collectionView.leadingAnchor.constraint(equalTo: cityLabel.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: cityLabel.trailingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: eventsLabel.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -8)])
+    }
+    
+    private func setupButton() {
+        addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            button.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
+            button.leadingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            button.widthAnchor.constraint(equalToConstant: 30),
+            button.heightAnchor.constraint(equalToConstant: 30)])
+    }
+    
+    private func setupEditProfileButton() {
+        addSubview(editProfileButton)
+        editProfileButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            editProfileButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            editProfileButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)])
     }
     
     
