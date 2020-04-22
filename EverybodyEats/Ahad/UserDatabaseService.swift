@@ -62,7 +62,7 @@ class UserDatabaseService {
         let docRef = db.collection(UserDatabaseService.usersCollection).document(id)
         
         if let imageURL = imageURL {
-            StorageService.helper.uploadPhoto(userId: id, imageURL: imageURL) { result in
+            StorageService.helper.uploadPhoto(id: id, experience: .user, imageURL: imageURL) { result in
                 switch result {
                 case .failure(let error):
                     completion(.failure(error))

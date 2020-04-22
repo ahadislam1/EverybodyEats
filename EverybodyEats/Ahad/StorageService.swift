@@ -9,6 +9,12 @@
 import Foundation
 import FirebaseStorage
 
+enum Experience {
+    case user
+    case post
+    case event
+}
+
 class StorageService {
     static var helper = StorageService()
     
@@ -16,21 +22,21 @@ class StorageService {
     
     private init() {}
     
-    public func uploadPhoto(userId: String? = nil,
-                            postId: String? = nil,
-                            eventId: String? = nil,
+    public func uploadPhoto(id: String, experience: Experience,
                             imageURL: URL,
                             completion: @escaping (Result<URL, Error>) -> Void) {
         
         var photoReference: StorageReference!
         
-        if let id = userId {
+        switch experience {
+        case .user:
             photoReference = storageRef.child("UserProfilesPhotos/\(id).jpeg")
-        } else if let id = postId {
+        case .post:
             photoReference = storageRef.child("PostsPhotos/\(id).jpeg")
-        } else if let id = eventId {
+        case .event:
             photoReference = storageRef.child("EventsPhotos/\(id).jpeg")
         }
+    
         
         let _ = photoReference.putFile(from: imageURL, metadata: nil) { (metaData, error) in
             if let error = error {
