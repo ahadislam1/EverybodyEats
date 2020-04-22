@@ -10,8 +10,9 @@ import UIKit
 
 class TabController: UITabBarController {
     
-    lazy var feedViewController: FeedViewController = {
-        let vc = FeedViewController()
+    lazy var feedViewController: UIViewController = {
+        let storyboard = UIStoryboard(name: "PostSB", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController()  ?? FeedViewController()
         vc.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "pencil"), tag: 0)
         return vc
     }()
@@ -36,7 +37,7 @@ class TabController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers = [feedViewController, eventViewController, favoriteViewController, profileViewController]
+        viewControllers = [UINavigationController(rootViewController: feedViewController), eventViewController, favoriteViewController, profileViewController]
     }
     
 }
