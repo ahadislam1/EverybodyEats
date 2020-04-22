@@ -53,7 +53,7 @@ class ProfileView: UIView {
         return l
     }()
     
-    private lazy var displayLabel: UILabel = {
+    public lazy var displayLabel: UILabel = {
         let l = UILabel()
         l.text = "Display Name"
         l.textAlignment = .center
@@ -61,7 +61,7 @@ class ProfileView: UIView {
         return l
     }()
     
-    private lazy var cityLabel: UILabel = {
+    public lazy var cityLabel: UILabel = {
         let l = UILabel()
         l.text = "NYC"
         l.textAlignment = .center

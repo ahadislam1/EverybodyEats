@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ProfileViewController: UIViewController {
     
@@ -80,7 +81,11 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
 
 extension ProfileViewController: ProfileViewDelegate {
     func didPressEditButton() {
-        print("x")
+        let epv = UIHostingController(rootView: EditProfileView(displayName: profileView.displayLabel.text, city: profileView.cityLabel.text, delegate: self))
+        epv.rootView.dismiss = {
+            epv.dismiss(animated: true, completion: nil)
+        }
+        present(epv, animated: true)
     }
     
     func didPressButton() {
@@ -105,6 +110,21 @@ extension ProfileViewController: ProfileViewDelegate {
     private func showPicker(sourceType: UIImagePickerController.SourceType) {
         imagePickerController.sourceType = sourceType
         present(imagePickerController, animated: true)
+    }
+    
+    
+}
+
+extension ProfileViewController: EditProfileViewDelegate {
+    func didPressSaveButton(name: String?, city: String?) {
+        if let name = name, !name.isEmpty {
+            profileView.displayLabel.text = name
+        }
+        if let city = city, !city.isEmpty {
+            profileView.cityLabel.text = city
+        }
+        
+        //TODO: Handle update events inside of firebase, through there send out alearts and etc.
     }
     
     
