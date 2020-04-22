@@ -70,10 +70,20 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+            let imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL else {
             return
         }
+        print(imageURL)
         profileView.imageView.image = image
+        StorageService.helper.uploadPhoto(userId: "test", imageURL: imageURL) { result in
+            switch result {
+            case .success(let url):
+                print(url)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         //TODO: Handle set image in firebase.
         dismiss(animated: true, completion: nil)
     }
@@ -81,7 +91,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
 
 extension ProfileViewController: ProfileViewDelegate {
     func didPressEditButton() {
-        let epv = UIHostingController(rootView: EditProfileView(displayName: profileView.displayLabel.text, city: profileView.cityLabel.text, delegate: self))
+        let epv = UIHostingController(rootView: EditProfileView(displayName: profileView.displayLabel.text,
+                                                                city: profileView.cityLabel.text, delegate: self))
         epv.rootView.dismiss = {
             epv.dismiss(animated: true, completion: nil)
         }
