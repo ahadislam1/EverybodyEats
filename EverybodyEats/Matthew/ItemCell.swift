@@ -13,4 +13,7 @@ class ItemCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var detailButton: UIButton!
     
+    public func configureCell() {
+        
+    }
 }
