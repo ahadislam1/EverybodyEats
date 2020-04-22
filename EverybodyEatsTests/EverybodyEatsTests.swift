@@ -29,7 +29,7 @@ class EverybodyEatsTests: XCTestCase {
     
     func testCreateUser() {
         let exp = XCTestExpectation(description: "Succession")
-        let user = User(displayName: "Chicken", city: "City")
+        let user = User(displayName: "Chelsi Christmas", city: "Icheon")
         UserDatabaseService.helper.createUser(user: user) { result in
             switch result {
             case .failure(let error):

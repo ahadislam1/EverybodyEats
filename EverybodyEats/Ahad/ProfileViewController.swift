@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import Kingfisher
 
 class ProfileViewController: UIViewController {
     
@@ -32,6 +33,20 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
+        getUser()
+    }
+    
+    private func getUser() {
+        UserDatabaseService.helper.getUser(id: UserDatabaseService.testUserID) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let user):
+                if let urlString = user.photoURL, let url = URL(string: urlString) {
+                    self?.profileView.imageView.kf.setImage(with: url)
+                }
+            }
+        }
     }
 
 }
@@ -76,15 +91,14 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
         }
         print(imageURL)
         profileView.imageView.image = image
-        StorageService.helper.uploadPhoto(userId: "test", imageURL: imageURL) { result in
+        UserDatabaseService.helper.updateUser(id: UserDatabaseService.testUserID, imageURL: imageURL) { result in
             switch result {
-            case .success(let url):
-                print(url)
             case .failure(let error):
                 print(error.localizedDescription)
+            case .success(let bool):
+                print("success")
             }
         }
-        //TODO: Handle set image in firebase.
         dismiss(animated: true, completion: nil)
     }
 }
@@ -128,14 +142,28 @@ extension ProfileViewController: ProfileViewDelegate {
 
 extension ProfileViewController: EditProfileViewDelegate {
     func didPressSaveButton(name: String?, city: String?) {
+        
+        var dict = [AnyHashable: Any]()
+        
         if let name = name, !name.isEmpty {
             profileView.displayLabel.text = name
-        }
-        if let city = city, !city.isEmpty {
-            profileView.cityLabel.text = city
+            dict["displayName"] = name
         }
         
-        //TODO: Handle update events inside of firebase, through there send out alearts and etc.
+        if let city = city, !city.isEmpty {
+            profileView.cityLabel.text = city
+            dict["city"] = city
+        }
+        
+        UserDatabaseService.helper.updateUser(id: UserDatabaseService.testUserID, dict: dict) { result in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let bool):
+                print(bool)
+            }
+        }
+
     }
     
     

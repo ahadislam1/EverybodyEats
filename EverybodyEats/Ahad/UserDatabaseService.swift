@@ -18,6 +18,7 @@ class UserDatabaseService {
     static let helper = UserDatabaseService()
     
     private static let usersCollection = "users"
+    public static let testUserID = "55CD675C-A159-4ADF-B1C7-5D4C43981B2D"
     
     private let db = Firestore.firestore()
     
@@ -57,7 +58,26 @@ class UserDatabaseService {
         }
     }
     
-    func updateUser(id: String, city: String? = nil, name: String? = nil, imageURL: URL? = nil) {
+    func updateUser(id: String, dict: [AnyHashable: Any]? = nil, imageURL: URL? = nil, completion: @escaping (Result<Bool, Error>) -> ()) {
+        let docRef = db.collection(UserDatabaseService.usersCollection).document(id)
         
+        if let imageURL = imageURL {
+            StorageService.helper.uploadPhoto(userId: id, imageURL: imageURL) { result in
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(let url):
+                    docRef.updateData(["photoURL": url.absoluteString])
+                }
+            }
+        } else if let dict = dict {
+            docRef.updateData(dict) { error in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(true))
+                }
+            }
+        }
     }
 }

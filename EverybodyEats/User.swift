@@ -20,12 +20,4 @@ struct User: Codable {
         self.displayName = displayName
         self.city = city
     }
-    
-    init(displayName: String, city: String, photoURL: String) {
-        id = UUID().uuidString
-        self.displayName = displayName
-        self.city = city
-        self.photoURL = photoURL
-    }
-    
 }
