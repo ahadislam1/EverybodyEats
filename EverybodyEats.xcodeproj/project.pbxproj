@@ -31,6 +31,7 @@
 		0C919F7A2450C85600826E45 /* PostFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F792450C85600826E45 /* PostFavoriteCell.xib */; };
 		0C919F7C2450CDD300826E45 /* PostFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F7B2450CDD300826E45 /* PostFavoriteCell.swift */; };
 		303A170424508DCA00587485 /* UIImage+ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A170324508DCA00587485 /* UIImage+ResizeImage.swift */; };
+		303A17062450D4B800587485 /* Date+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A17052450D4B800587485 /* Date+Extention.swift */; };
 		30584AE1244FA634009225FD /* PostSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30584AE0244FA634009225FD /* PostSB.storyboard */; };
 		30A8852D244FBA8400B582C0 /* PostDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */; };
 		30A8852F244FCBF600B582C0 /* UIAlertController+ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8852E244FCBF600B582C0 /* UIAlertController+ShowAlert.swift */; };
@@ -89,6 +90,7 @@
 		15822ACD2A77028FE698AC97 /* Pods-EverybodyEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEats.release.xcconfig"; path = "Target Support Files/Pods-EverybodyEats/Pods-EverybodyEats.release.xcconfig"; sourceTree = "<group>"; };
 		168A8C042D768CFA07555BF5 /* Pods_EverybodyEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EverybodyEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		303A170324508DCA00587485 /* UIImage+ResizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ResizeImage.swift"; sourceTree = "<group>"; };
+		303A17052450D4B800587485 /* Date+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extention.swift"; sourceTree = "<group>"; };
 		30584AE0244FA634009225FD /* PostSB.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostSB.storyboard; sourceTree = "<group>"; };
 		30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatabaseService.swift; sourceTree = "<group>"; };
 		30A8852E244FCBF600B582C0 /* UIAlertController+ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+ShowAlert.swift"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				30A8852E244FCBF600B582C0 /* UIAlertController+ShowAlert.swift */,
 				303A170324508DCA00587485 /* UIImage+ResizeImage.swift */,
+				303A17052450D4B800587485 /* Date+Extention.swift */,
 				30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */,
 				0B712A72244DEB94004FD62B /* FeedViewController.swift */,
 				0B09660F244E29ED00FB4A68 /* CreatePostViewController.swift */,
@@ -430,6 +433,7 @@
 				0B096608244E297600FB4A68 /* TabController.swift in Sources */,
 				0B09660A244E298700FB4A68 /* ProfileViewController.swift in Sources */,
 				0B09660E244E29C600FB4A68 /* FavoriteViewController.swift in Sources */,
+				303A17062450D4B800587485 /* Date+Extention.swift in Sources */,
 				0C919F70244E823100826E45 /* ItemCell.swift in Sources */,
 				0B7EF1A0244FE3E8004A06E8 /* EditProfileView.swift in Sources */,
 				30DE01A5244EAB3C00BD5194 /* (null) in Sources */,
@@ -601,13 +605,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HHA5GS3CVN;
+				DEVELOPMENT_TEAM = TTN2293JXM;
 				INFOPLIST_FILE = EverybodyEats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.JaheedHaynes.EverybodyEats;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JaheedHaynes.everybodyeats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -620,13 +624,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HHA5GS3CVN;
+				DEVELOPMENT_TEAM = TTN2293JXM;
 				INFOPLIST_FILE = EverybodyEats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.JaheedHaynes.EverybodyEats;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JaheedHaynes.everybodyeats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
