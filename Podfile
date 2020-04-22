@@ -9,6 +9,9 @@ target 'EverybodyEats' do
   # add pods for desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
   pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Storage'
+  pod 'Kingfisher'
 
   target 'EverybodyEatsTests' do
     inherit! :search_paths
