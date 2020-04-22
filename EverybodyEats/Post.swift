@@ -12,7 +12,8 @@ import Foundation
 struct Post: Codable {
     let id = UUID().uuidString
     let imageData: Data?
-    let description: String
-    let createdBy: String
+    let caption: String
+    let userHandle: String
+    let createdDate: Date
     let likes = Like()
 }

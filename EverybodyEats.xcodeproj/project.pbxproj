@@ -11,7 +11,7 @@
 		0B09660A244E298700FB4A68 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B096609244E298700FB4A68 /* ProfileViewController.swift */; };
 		0B09660C244E29B100FB4A68 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B09660B244E29B100FB4A68 /* EventViewController.swift */; };
 		0B09660E244E29C600FB4A68 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B09660D244E29C600FB4A68 /* FavoriteViewController.swift */; };
-		0B096610244E29ED00FB4A68 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B09660F244E29ED00FB4A68 /* DetailViewController.swift */; };
+		0B096610244E29ED00FB4A68 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B09660F244E29ED00FB4A68 /* CreatePostViewController.swift */; };
 		0B096616244E3F8600FB4A68 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B096615244E3F8600FB4A68 /* ProfileView.swift */; };
 		0B096618244E51D400FB4A68 /* TitleReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B096617244E51D400FB4A68 /* TitleReusableView.swift */; };
 		0B09661A244E521D00FB4A68 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B096619244E521D00FB4A68 /* EventCell.swift */; };
@@ -27,6 +27,10 @@
 		0BCADC15244E8462002EB913 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC14244E8462002EB913 /* Event.swift */; };
 		0BCADC17244E84F8002EB913 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC16244E84F8002EB913 /* Post.swift */; };
 		0BCADC19244E8575002EB913 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC18244E8575002EB913 /* Like.swift */; };
+		30584ADD244ED164009225FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30584ADC244ED164009225FD /* GoogleService-Info.plist */; };
+		30584AE1244FA634009225FD /* PostSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30584AE0244FA634009225FD /* PostSB.storyboard */; };
+		30A8852D244FBA8400B582C0 /* PostDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */; };
+		30A8852F244FCBF600B582C0 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8852E244FCBF600B582C0 /* ShowAlert.swift */; };
 		0C919F6A244E72BB00826E45 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F69244E72BB00826E45 /* FavoriteView.swift */; };
 		0C919F6E244E770100826E45 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F6D244E770100826E45 /* ItemCell.xib */; };
 		0C919F70244E823100826E45 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F6F244E823100826E45 /* ItemCell.swift */; };
@@ -52,7 +56,7 @@
 		0B096609244E298700FB4A68 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0B09660B244E29B100FB4A68 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		0B09660D244E29C600FB4A68 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
-		0B09660F244E29ED00FB4A68 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0B09660F244E29ED00FB4A68 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		0B096615244E3F8600FB4A68 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0B096617244E51D400FB4A68 /* TitleReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleReusableView.swift; sourceTree = "<group>"; };
 		0B096619244E521D00FB4A68 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -77,6 +81,10 @@
 		0C919F6F244E823100826E45 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		15822ACD2A77028FE698AC97 /* Pods-EverybodyEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEats.release.xcconfig"; path = "Target Support Files/Pods-EverybodyEats/Pods-EverybodyEats.release.xcconfig"; sourceTree = "<group>"; };
 		168A8C042D768CFA07555BF5 /* Pods_EverybodyEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EverybodyEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30584ADC244ED164009225FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30584AE0244FA634009225FD /* PostSB.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostSB.storyboard; sourceTree = "<group>"; };
+		30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatabaseService.swift; sourceTree = "<group>"; };
+		30A8852E244FCBF600B582C0 /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		30DE01A4244EAB3C00BD5194 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		30DE01A6244EB56700BD5194 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		84903AA73DBEAF787D2F3932 /* Pods-EverybodyEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEats.debug.xcconfig"; path = "Target Support Files/Pods-EverybodyEats/Pods-EverybodyEats.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,10 +115,13 @@
 		0B096611244E2F8500FB4A68 /* Jaheed */ = {
 			isa = PBXGroup;
 			children = (
+				30A8852E244FCBF600B582C0 /* ShowAlert.swift */,
+				30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */,
 				0B712A72244DEB94004FD62B /* FeedViewController.swift */,
+				0B09660F244E29ED00FB4A68 /* CreatePostViewController.swift */,
 				30DE01A4244EAB3C00BD5194 /* FeedView.swift */,
-				0B09660F244E29ED00FB4A68 /* DetailViewController.swift */,
 				30DE01A6244EB56700BD5194 /* PostCell.swift */,
+				30584AE0244FA634009225FD /* PostSB.storyboard */,
 			);
 			path = Jaheed;
 			sourceTree = "<group>";
@@ -301,6 +312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30584AE1244FA634009225FD /* PostSB.storyboard in Resources */,
 				0B712A7B244DEB97004FD62B /* LaunchScreen.storyboard in Resources */,
 				0B480975244F86B5002AE2E0 /* GoogleService-Info.plist in Resources */,
 				0C919F6E244E770100826E45 /* ItemCell.xib in Resources */,
@@ -401,11 +413,13 @@
 				0B09661A244E521D00FB4A68 /* EventCell.swift in Sources */,
 				0B712A6F244DEB94004FD62B /* AppDelegate.swift in Sources */,
 				0BCADC13244E8307002EB913 /* User.swift in Sources */,
+				30A8852F244FCBF600B582C0 /* ShowAlert.swift in Sources */,
 				0B712A71244DEB94004FD62B /* SceneDelegate.swift in Sources */,
+				30A8852D244FBA8400B582C0 /* PostDatabaseService.swift in Sources */,
 				0B09660C244E29B100FB4A68 /* EventViewController.swift in Sources */,
 				0C919F6A244E72BB00826E45 /* FavoriteView.swift in Sources */,
 				0B096618244E51D400FB4A68 /* TitleReusableView.swift in Sources */,
-				0B096610244E29ED00FB4A68 /* DetailViewController.swift in Sources */,
+				0B096610244E29ED00FB4A68 /* CreatePostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
