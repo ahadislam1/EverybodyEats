@@ -13,7 +13,6 @@ protocol EditProfileViewDelegate: AnyObject {
 }
 
 struct EditProfileView: View {
-    @Environment(\.presentationMode) var presentationMode
     @State private var displayName: String = ""
     @State private var city: String = ""
     
@@ -55,6 +54,7 @@ struct EditProfileView: View {
                 .background(Color.red)
                 .cornerRadius(20)
                 .padding(.horizontal, 50.0)
+                .padding(.bottom)
             }
             .navigationBarTitle("Edit Info")
         }
