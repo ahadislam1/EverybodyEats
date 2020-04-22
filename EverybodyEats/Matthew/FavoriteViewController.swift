@@ -9,21 +9,55 @@
 import UIKit
 
 class FavoriteViewController: UIViewController {
+    
+    let favoriteView = FavoriteView()
+    let events = [Event]()
+    let post = [Post]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPink
+        favoriteView.collectionView.dataSource = self
+        favoriteView.collectionView.delegate = self
+        favoriteView.collectionView.register(UINib(nibName: "ItemCell", bundle: nil), forCellWithReuseIdentifier: "itemCell")
+        favoriteView.backgroundColor = .systemGreen
+        view = favoriteView
+    }
+
+    @objc
+    func presentDetails () {
+        //TODO: Present a Detail View Controller.
+    }
+}
+
+extension FavoriteViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        1
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as? ItemCell else {
+            fatalError("Could not downcast to item cell")
+        }
+        cell.detailButton.addTarget(self, action: #selector(presentDetails), for: .touchUpInside)
+        return cell
     }
-    */
+    
+    
+}
 
+extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.6)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    }
+
+    
+    
 }
