@@ -10,25 +10,35 @@ import XCTest
 @testable import EverybodyEats
 
 class EverybodyEatsTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testGetUser() {
+        let exp = XCTestExpectation(description: "Success")
+        let userTestID = "ggMbMkVV6Vdqvr70RiHL"
+        UserDatabaseService.helper.getUser(id: userTestID) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            case .success(let user):
+                XCTAssert(user.id == userTestID, "Expected \(userTestID), but got \(user.id)")
+                exp.fulfill()
+            }
         }
+        
+        wait(for: [exp], timeout: 2)
     }
-
+    
+    func testCreateUser() {
+        let exp = XCTestExpectation(description: "Succession")
+        let user = User(displayName: "Chelsi Christmas", city: "Icheon")
+        UserDatabaseService.helper.createUser(user: user) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            case .success:
+                exp.fulfill()
+            }
+        }
+        
+        wait(for: [exp], timeout: 2)
+    }
 }
