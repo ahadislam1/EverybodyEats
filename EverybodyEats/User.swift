@@ -9,6 +9,23 @@
 import Foundation
 
 /// This struct is meant as a dummy for now.
-struct User {
+struct User: Codable {
     let id: String
+    let displayName: String
+    let city: String
+    var photoURL: String? = nil
+    
+    init(displayName: String, city: String) {
+        id = UUID().uuidString
+        self.displayName = displayName
+        self.city = city
+    }
+    
+    init(displayName: String, city: String, photoURL: String) {
+        id = UUID().uuidString
+        self.displayName = displayName
+        self.city = city
+        self.photoURL = photoURL
+    }
+    
 }

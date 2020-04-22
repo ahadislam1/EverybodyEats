@@ -16,6 +16,7 @@
 		0B096618244E51D400FB4A68 /* TitleReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B096617244E51D400FB4A68 /* TitleReusableView.swift */; };
 		0B5055CC2450C92200C41E12 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B5055CB2450C92200C41E12 /* GoogleService-Info.plist */; };
 		0B5055CE2450CAE500C41E12 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5055CD2450CAE500C41E12 /* StorageService.swift */; };
+		0B5055D02450E58800C41E12 /* UserDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5055CF2450E58800C41E12 /* UserDatabaseService.swift */; };
 		0B712A6F244DEB94004FD62B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B712A6E244DEB94004FD62B /* AppDelegate.swift */; };
 		0B712A71244DEB94004FD62B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B712A70244DEB94004FD62B /* SceneDelegate.swift */; };
 		0B712A73244DEB94004FD62B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B712A72244DEB94004FD62B /* FeedViewController.swift */; };
@@ -67,6 +68,7 @@
 		0B096617244E51D400FB4A68 /* TitleReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleReusableView.swift; sourceTree = "<group>"; };
 		0B5055CB2450C92200C41E12 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0B5055CD2450CAE500C41E12 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		0B5055CF2450E58800C41E12 /* UserDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabaseService.swift; sourceTree = "<group>"; };
 		0B712A6B244DEB94004FD62B /* EverybodyEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EverybodyEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B712A6E244DEB94004FD62B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B712A70244DEB94004FD62B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				0B096615244E3F8600FB4A68 /* ProfileView.swift */,
 				0B5055CD2450CAE500C41E12 /* StorageService.swift */,
 				0B7EF19F244FE3E8004A06E8 /* EditProfileView.swift */,
+				0B5055CF2450E58800C41E12 /* UserDatabaseService.swift */,
 				0B096617244E51D400FB4A68 /* TitleReusableView.swift */,
 			);
 			path = Ahad;
@@ -418,6 +421,7 @@
 			files = (
 				303A170424508DCA00587485 /* UIImage+ResizeImage.swift in Sources */,
 				30DE01A7244EB56700BD5194 /* PostCell.swift in Sources */,
+				0B5055D02450E58800C41E12 /* UserDatabaseService.swift in Sources */,
 				0B712A73244DEB94004FD62B /* FeedViewController.swift in Sources */,
 				0BCADC17244E84F8002EB913 /* Post.swift in Sources */,
 				0BCADC15244E8462002EB913 /* Event.swift in Sources */,
