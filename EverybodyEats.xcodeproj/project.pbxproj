@@ -29,12 +29,11 @@
 		0C919F6A244E72BB00826E45 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F69244E72BB00826E45 /* FavoriteView.swift */; };
 		0C919F6E244E770100826E45 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F6D244E770100826E45 /* ItemCell.xib */; };
 		0C919F70244E823100826E45 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F6F244E823100826E45 /* ItemCell.swift */; };
-		303BB60B2450163C008E426A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303BB60A2450163C008E426A /* Storage.swift */; };
+		303A170424508DCA00587485 /* UIImage+ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A170324508DCA00587485 /* UIImage+ResizeImage.swift */; };
 		30584AE1244FA634009225FD /* PostSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30584AE0244FA634009225FD /* PostSB.storyboard */; };
 		30A8852D244FBA8400B582C0 /* PostDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */; };
-		30A8852F244FCBF600B582C0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8852E244FCBF600B582C0 /* Extensions.swift */; };
+		30A8852F244FCBF600B582C0 /* UIAlertController+ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8852E244FCBF600B582C0 /* UIAlertController+ShowAlert.swift */; };
 		30B5BF82245003A600480378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30B5BF81245003A600480378 /* GoogleService-Info.plist */; };
-		30DE01A5244EAB3C00BD5194 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE01A4244EAB3C00BD5194 /* FeedView.swift */; };
 		30DE01A7244EB56700BD5194 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE01A6244EB56700BD5194 /* PostCell.swift */; };
 		96C553B2A46B11F38315E338 /* Pods_EverybodyEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168A8C042D768CFA07555BF5 /* Pods_EverybodyEats.framework */; };
 		B3A3225093B9F7BA819165BA /* Pods_EverybodyEatsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC26D6E78BFF791436099A2 /* Pods_EverybodyEatsTests.framework */; };
@@ -80,12 +79,11 @@
 		0C919F6F244E823100826E45 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		15822ACD2A77028FE698AC97 /* Pods-EverybodyEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEats.release.xcconfig"; path = "Target Support Files/Pods-EverybodyEats/Pods-EverybodyEats.release.xcconfig"; sourceTree = "<group>"; };
 		168A8C042D768CFA07555BF5 /* Pods_EverybodyEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EverybodyEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		303BB60A2450163C008E426A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		303A170324508DCA00587485 /* UIImage+ResizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ResizeImage.swift"; sourceTree = "<group>"; };
 		30584AE0244FA634009225FD /* PostSB.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostSB.storyboard; sourceTree = "<group>"; };
 		30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatabaseService.swift; sourceTree = "<group>"; };
-		30A8852E244FCBF600B582C0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		30A8852E244FCBF600B582C0 /* UIAlertController+ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+ShowAlert.swift"; sourceTree = "<group>"; };
 		30B5BF81245003A600480378 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		30DE01A4244EAB3C00BD5194 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		30DE01A6244EB56700BD5194 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		84903AA73DBEAF787D2F3932 /* Pods-EverybodyEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEats.debug.xcconfig"; path = "Target Support Files/Pods-EverybodyEats/Pods-EverybodyEats.debug.xcconfig"; sourceTree = "<group>"; };
 		9DCB99F864A39AAC7FDED5D7 /* Pods-EverybodyEatsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEatsTests.release.xcconfig"; path = "Target Support Files/Pods-EverybodyEatsTests/Pods-EverybodyEatsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,12 +113,11 @@
 		0B096611244E2F8500FB4A68 /* Jaheed */ = {
 			isa = PBXGroup;
 			children = (
-				30A8852E244FCBF600B582C0 /* Extensions.swift */,
+				30A8852E244FCBF600B582C0 /* UIAlertController+ShowAlert.swift */,
+				303A170324508DCA00587485 /* UIImage+ResizeImage.swift */,
 				30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */,
-				303BB60A2450163C008E426A /* Storage.swift */,
 				0B712A72244DEB94004FD62B /* FeedViewController.swift */,
 				0B09660F244E29ED00FB4A68 /* CreatePostViewController.swift */,
-				30DE01A4244EAB3C00BD5194 /* FeedView.swift */,
 				30DE01A6244EB56700BD5194 /* PostCell.swift */,
 				30584AE0244FA634009225FD /* PostSB.storyboard */,
 			);
@@ -399,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303A170424508DCA00587485 /* UIImage+ResizeImage.swift in Sources */,
 				30DE01A7244EB56700BD5194 /* PostCell.swift in Sources */,
 				0B712A73244DEB94004FD62B /* FeedViewController.swift in Sources */,
 				0BCADC17244E84F8002EB913 /* Post.swift in Sources */,
@@ -410,12 +408,10 @@
 				0B09660E244E29C600FB4A68 /* FavoriteViewController.swift in Sources */,
 				0C919F70244E823100826E45 /* ItemCell.swift in Sources */,
 				0B7EF1A0244FE3E8004A06E8 /* EditProfileView.swift in Sources */,
-				30DE01A5244EAB3C00BD5194 /* FeedView.swift in Sources */,
 				0B09661A244E521D00FB4A68 /* EventCell.swift in Sources */,
 				0B712A6F244DEB94004FD62B /* AppDelegate.swift in Sources */,
 				0BCADC13244E8307002EB913 /* User.swift in Sources */,
-				303BB60B2450163C008E426A /* Storage.swift in Sources */,
-				30A8852F244FCBF600B582C0 /* Extensions.swift in Sources */,
+				30A8852F244FCBF600B582C0 /* UIAlertController+ShowAlert.swift in Sources */,
 				0B712A71244DEB94004FD62B /* SceneDelegate.swift in Sources */,
 				30A8852D244FBA8400B582C0 /* PostDatabaseService.swift in Sources */,
 				0B09660C244E29B100FB4A68 /* EventViewController.swift in Sources */,

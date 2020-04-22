@@ -90,6 +90,20 @@ class CreatePostViewController: UIViewController {
         
     }
     
+    
+//    private func uploadPhoto(photo: UIImage, documentId: String) {
+//      storageService.uploadPhoto(itemId: documentId, image: photo) { [weak self] (result) in
+//        switch result {
+//        case .failure(let error):
+//          DispatchQueue.main.async {
+//            self?.showAlert(title: "Error uploading photo", message: "\(error.localizedDescription)")
+//          }
+//        case .success(let url):
+//          self?.updateItemImageURL(url, documentId: documentId)
+//        }
+//      }
+//    }
+    
    
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
