@@ -8,17 +8,31 @@
 
 import UIKit
 
+enum ViewState {
+    case posts
+    case events
+    
+}
+
 class FavoriteViewController: UIViewController {
     
     let favoriteView = FavoriteView()
+    let posts = [Post]()
     let events = [Event]()
-    let post = [Post]()
+    
+    var currentViewState: ViewState = .posts {
+        didSet {
+            favoriteView.collectionView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         favoriteView.collectionView.dataSource = self
         favoriteView.collectionView.delegate = self
+        favoriteView.delegate = self
         favoriteView.collectionView.register(UINib(nibName: "ItemCell", bundle: nil), forCellWithReuseIdentifier: "itemCell")
+        favoriteView.collectionView.register(UINib(nibName: "PostFavoriteCell", bundle: nil), forCellWithReuseIdentifier: "postFavoriteCell")
         favoriteView.backgroundColor = .systemGreen
         view = favoriteView
     }
@@ -27,7 +41,8 @@ class FavoriteViewController: UIViewController {
     func presentDetails () {
         //TODO: Present a Detail View Controller.
     }
-}
+    }
+
 
 extension FavoriteViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -35,12 +50,35 @@ extension FavoriteViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as? ItemCell else {
-            fatalError("Could not downcast to item cell")
+        switch currentViewState {
+        case .posts:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postFavoriteCell", for: indexPath) as? PostFavoriteCell else {
+                fatalError("Could not downcast to postFavoriteCell")
+            }
+            return cell
+        case .events:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as? ItemCell else {
+                fatalError("Could not downcast to itemCell")
+            }
+            cell.detailButton.addTarget(self, action: #selector(presentDetails), for: .touchUpInside)
+            return cell
         }
-        cell.detailButton.addTarget(self, action: #selector(presentDetails), for: .touchUpInside)
-        return cell
     }
+    
+    
+}
+
+extension FavoriteViewController: FavoriteViewDelegate {
+     func segmentedControlChanged() {
+           switch favoriteView.segmentedControl.selectedSegmentIndex {
+           case 0:
+               currentViewState = .posts
+           case 1:
+               currentViewState = .events
+           default:
+               currentViewState = .posts
+           }
+       }
     
     
 }

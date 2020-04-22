@@ -19,6 +19,7 @@ enum Location {
 class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var sharePostImageView: UIImageView!
+    
     @IBOutlet weak var captionTextField: UITextField!
     @IBOutlet weak var locationOnOffLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
@@ -49,6 +50,7 @@ class CreatePostViewController: UIViewController {
         // add long press gesture to itemImageView
         sharePostImageView.isUserInteractionEnabled = true
         sharePostImageView.addGestureRecognizer(longPressGesture)
+        
         
     }
     
@@ -86,6 +88,8 @@ class CreatePostViewController: UIViewController {
         
          // resize image before uploading to Storage
         let resizedImage = UIImage.resizeImage(originalImage: selectedImage, rect: sharePostImageView.bounds)
+        
+        
         
         
     }

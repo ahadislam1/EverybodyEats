@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FavoriteViewDelegate: AnyObject {
+    func segmentedControlChanged()
+}
+
 class FavoriteView: UIView {
     
     public lazy var segmentedControl: UISegmentedControl = {
@@ -15,6 +19,7 @@ class FavoriteView: UIView {
         let sc = UISegmentedControl(items: segmentItems)
         sc.backgroundColor = .systemGreen
         sc.selectedSegmentIndex = 0
+        sc.addTarget(self, action: #selector(segmentedControlChanged), for: .valueChanged)
         return sc
     }()
     
@@ -26,6 +31,10 @@ class FavoriteView: UIView {
         cv.backgroundColor = .systemGreen
         return cv
     }()
+    
+    public weak var delegate: FavoriteViewDelegate?
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
@@ -41,6 +50,11 @@ class FavoriteView: UIView {
         setupSegmentedControl()
         setupCollectionView()
     }
+    
+    @objc
+    func segmentedControlChanged() {
+        delegate?.segmentedControlChanged()
+       }
     
     private func setupSegmentedControl() {
         addSubview(segmentedControl)

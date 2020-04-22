@@ -17,6 +17,8 @@ class FeedViewController: UIViewController {
     
      private var listener: ListenerRegistration?
     
+    private var refreshControl: UIRefreshControl!
+    
     var usersPosts = [Post](){
         didSet{
             DispatchQueue.main.async {
@@ -30,6 +32,7 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        addNavBarImage()
     }
     
     private func configureCollectionView(){
@@ -52,6 +55,26 @@ class FeedViewController: UIViewController {
         }
       })
     }
+    
+    
+    //---------------------------
+    public func addNavBarImage(){
+        let navController = navigationController!
+        
+        let image = #imageLiteral(resourceName: "EElogo")
+        let imageView = UIImageView(image: image)
+        
+        let bannerWidth = navController.navigationBar.frame.size.width
+        let bannerHeight = navController.navigationBar.frame.size.height
+        
+        let bannerX = bannerWidth / 2 - image.size.width / 2
+        let bannerY = bannerHeight / 2 - image.size.height / 2
+        
+        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth, height: bannerHeight)
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = imageView
+    }
+    //---------------------------
 
 }
 
@@ -66,6 +89,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as? PostCell else {
             fatalError("error")
         }
+        cell.delegate = self
         return cell
         }
     
@@ -87,7 +111,14 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
 }
+
+extension FeedViewController: PostCellDelegate {
+    func didSelectUserHandle(_ itemCell: PostCell) {
+        present(ProfileViewController(), animated: true, completion: nil)
+    }
     
+    
+}
 
 
 

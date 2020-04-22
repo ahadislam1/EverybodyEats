@@ -12,10 +12,10 @@ import Firebase
 /// A user-made object
 struct Post: Codable {
     let id = UUID().uuidString
-    let imageData: Data?
+    let imageData: String
     let caption: String
     let userHandle: String
-    let createdDate: String
+    let createdDate: Date
     let likes = Like()
 }
 
