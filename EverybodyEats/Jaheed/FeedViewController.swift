@@ -46,8 +46,9 @@ class FeedViewController: UIViewController {
             self?.showAlert(title: "Try again later", message: "\(error.localizedDescription)")
           }
         } else if let snapshot = snapshot {
-         // let posts = snapshot.documents.map { Post($0.data()) }
-         // self?.usersPosts = posts
+            print("something")
+            //let posts = snapshot.documents.map { Post($0.data()) }
+          //self?.usersPosts = posts
         }
       })
     }
@@ -57,7 +58,7 @@ class FeedViewController: UIViewController {
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
