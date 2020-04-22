@@ -7,26 +7,49 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class FeedViewController: UIViewController {
     
-    private lazy var feedView = FeedView()
+    @IBOutlet weak var collectionView: UICollectionView!
     
+     private let databaseService = PostDatabaseService()
     
-    override func loadView() {
-        view = feedView
+     private var listener: ListenerRegistration?
+    
+    var usersPosts = [Post](){
+        didSet{
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
+    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         configureCollectionView()
-        
     }
     
     private func configureCollectionView(){
-        feedView.collectionView.delegate = self
-        feedView.collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+      super.viewDidAppear(true)
+      listener = Firestore.firestore().collection(PostDatabaseService.userPostsCollection).addSnapshotListener({ [weak self] (snapshot, error) in
+        if let error = error {
+          DispatchQueue.main.async {
+            self?.showAlert(title: "Try again later", message: "\(error.localizedDescription)")
+          }
+        } else if let snapshot = snapshot {
+         // let posts = snapshot.documents.map { Post($0.data()) }
+         // self?.usersPosts = posts
+        }
+      })
     }
 
 }
@@ -38,27 +61,32 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as? PostCell else{
-            fatalError("failed to downcast post cell")
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as? PostCell else {
+            fatalError("error")
         }
         return cell
-    }
-    
+        }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: view.frame.width - 10, height: view.frame.height / 3)
+        
+        let interItemSpacing: CGFloat = 10 // space between items
+        
+        let maxWidth = UIScreen.main.bounds.size.width // devices width
+        
+        let numberOfItems: CGFloat = 1 // items
+        
+        let totalSpacing: CGFloat = numberOfItems * interItemSpacing
+        
+//        let itemWidth: CGFloat = (maxWidth - totalSpacing) / numberOfItems
+        let itemWidth: CGFloat = maxWidth
+        return CGSize(width: itemWidth, height: itemWidth)
+        
+        
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        20
-    }
-    
     
 }
+    
+
 
 
