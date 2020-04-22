@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Firebase
+//import Kingfisher
 
 class PostCell: UICollectionViewCell {
     
