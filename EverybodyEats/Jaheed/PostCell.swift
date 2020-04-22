@@ -8,7 +8,11 @@
 
 import UIKit
 import Firebase
-//import Kingfisher
+import Kingfisher
+
+protocol PostCellDelegate: AnyObject {
+    func didSelectUserHandle(_ itemCell: PostCell)
+}
 
 class PostCell: UICollectionViewCell {
     
@@ -21,107 +25,40 @@ class PostCell: UICollectionViewCell {
     
     private var currentPost: Post!
    
+    weak var delegate: PostCellDelegate?
+
     
-//    private lazy var tapGesture: UITapGestureRecognizer = {
-//       let gesture = UITapGestureRecognizer()
-//        gesture.addTarget(self, action: #selector(handleTap(_:)))
-//        return gesture
-//    }()
+    private lazy var tapGesture: UITapGestureRecognizer = {
+       let gesture = UITapGestureRecognizer()
+        gesture.addTarget(self, action: #selector(handleTap(_:)))
+        return gesture
+    }()
+    
+    override func layoutSubviews() {
+           super.layoutSubviews()
+           
+           userHandleLabel.textColor = .systemIndigo
+           userHandleLabel.addGestureRecognizer(tapGesture)
+           userHandleLabel.isUserInteractionEnabled = true
+       }
+    
+    @objc private func handleTap(_ gesture: UITapGestureRecognizer){
+        // MARK: CD step 3
+        delegate?.didSelectUserHandle(self)
+    }
     
     private func configureCell(for post: Post) {
         currentPost = post
+        updateUI(id: post.id, imageData: post.imageData, caption: post.caption, createdDate: post.createdDate, userHandle: post.userHandle)
     }
     
-    private func updateUI(){
-        //postImage.kf.setImage(with: URL(string:imageURL))
-       
-    }
+     private func updateUI(id: String, imageData: String,caption: String, createdDate: Date, userHandle: String){
+           postImageView.kf.setImage(with: URL(string:imageData))
+           userHandleLabel.text = "@\(userHandle)"
+           datePostedLabel.text = createdDate.dateString()
+           captionLabel.text = caption
+       }
 
     
     
 }
-
-
-
-/*
-   private lazy var imageView: UIImageView = {
-       let iv = UIImageView()
-       iv.image = UIImage(systemName: "person")
-       return iv
-   }()
-   
-   private lazy var likeButton: UIButton = {
-       let lb = UIButton()
-       lb.setImage(UIImage(systemName: "heart"), for: .normal)
-       return lb
-   }()
-   
-   private lazy var userHandle: UILabel = {
-       let userHandle = UILabel()
-       userHandle.text = "User"
-       userHandle.font = UIFont(name: "Arial.bold", size: 13.0)
-       return userHandle
-   }()
-   
-   public lazy var userCaption: UILabel = {
-   let userHandle = UILabel()
-   userHandle.text = "Caption"
-   userHandle.font = UIFont(name: "Arial", size: 12.0)
-   return userHandle
-    }()
-   
-   
-   
-   override func layoutSubviews() {
-       super.layoutSubviews()
-       setupImageView()
-       setUpLikeButton()
-       setUpUserHandle()
-       setUpUserCaption()
-       
-       
-   }
-   
-   
-   
-   private func setupImageView() {
-       contentView.addSubview(imageView)
-       imageView.translatesAutoresizingMaskIntoConstraints = false
-       
-       NSLayoutConstraint.activate([
-           imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-           imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-           imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
-           imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor)])
-   }
-   
-   private func setUpLikeButton(){
-          addSubview(likeButton)
-          
-          likeButton.translatesAutoresizingMaskIntoConstraints = false
-          
-          NSLayoutConstraint.activate([
-           
-          ])
-      }
-      
-      private func setUpUserHandle(){
-          addSubview(userHandle)
-          
-          userHandle.translatesAutoresizingMaskIntoConstraints = false
-          
-          NSLayoutConstraint.activate([
-              
-          ])
-      }
-      
-      private func setUpUserCaption(){
-          addSubview(userCaption)
-          
-          userCaption.translatesAutoresizingMaskIntoConstraints = false
-          
-          NSLayoutConstraint.activate([
-              
-          ])
-      }
-*/
