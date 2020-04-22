@@ -15,7 +15,6 @@
 		0B096616244E3F8600FB4A68 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B096615244E3F8600FB4A68 /* ProfileView.swift */; };
 		0B096618244E51D400FB4A68 /* TitleReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B096617244E51D400FB4A68 /* TitleReusableView.swift */; };
 		0B09661A244E521D00FB4A68 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B096619244E521D00FB4A68 /* EventCell.swift */; };
-		0B480975244F86B5002AE2E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B480974244F86B5002AE2E0 /* GoogleService-Info.plist */; };
 		0B712A6F244DEB94004FD62B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B712A6E244DEB94004FD62B /* AppDelegate.swift */; };
 		0B712A71244DEB94004FD62B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B712A70244DEB94004FD62B /* SceneDelegate.swift */; };
 		0B712A73244DEB94004FD62B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B712A72244DEB94004FD62B /* FeedViewController.swift */; };
@@ -60,7 +59,6 @@
 		0B096615244E3F8600FB4A68 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0B096617244E51D400FB4A68 /* TitleReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleReusableView.swift; sourceTree = "<group>"; };
 		0B096619244E521D00FB4A68 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
-		0B480974244F86B5002AE2E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0B712A6B244DEB94004FD62B /* EverybodyEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EverybodyEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B712A6E244DEB94004FD62B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B712A70244DEB94004FD62B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +127,7 @@
 		0B096612244E2F9200FB4A68 /* Chelsi */ = {
 			isa = PBXGroup;
 			children = (
+				0B09660B244E29B100FB4A68 /* EventViewController.swift */,
 			);
 			path = Chelsi;
 			sourceTree = "<group>";
@@ -148,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				0B096609244E298700FB4A68 /* ProfileViewController.swift */,
-				0B09660B244E29B100FB4A68 /* EventViewController.swift */,
 				0B096615244E3F8600FB4A68 /* ProfileView.swift */,
 				0B7EF19F244FE3E8004A06E8 /* EditProfileView.swift */,
 				0B096617244E51D400FB4A68 /* TitleReusableView.swift */,
