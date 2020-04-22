@@ -55,12 +55,8 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDeleg
         UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        20
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        20
+        10
     }
     
     
@@ -83,6 +79,10 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
 }
 
 extension ProfileViewController: ProfileViewDelegate {
+    func didPressEditButton() {
+        print("x")
+    }
+    
     func didPressButton() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

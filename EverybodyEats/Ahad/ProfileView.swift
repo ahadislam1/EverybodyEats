@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProfileViewDelegate: AnyObject {
     func didPressButton()
+    func didPressEditButton()
 }
 
 class ProfileView: UIView {
@@ -27,6 +28,15 @@ class ProfileView: UIView {
         b.setImage(UIImage(systemName: "plus"), for: .normal)
         b.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         b.backgroundColor = .systemOrange
+        return b
+    }()
+    
+    private lazy var editProfileButton: UIButton = {
+        let b = UIButton()
+        b.setTitle("Edit Profile", for: .normal)
+        b.setTitleColor(.systemBlue, for: .normal)
+        b.setTitleColor(.systemBackground, for: .highlighted)
+        b.addTarget(self, action: #selector(profileButtonPressed), for: .touchUpInside)
         return b
     }()
     
@@ -100,6 +110,11 @@ class ProfileView: UIView {
         delegate?.didPressButton()
     }
     
+    @objc
+    private func profileButtonPressed() {
+        delegate?.didPressEditButton()
+    }
+    
     fileprivate func configureImageLayer() {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.bounds.width / 2
@@ -127,6 +142,7 @@ class ProfileView: UIView {
         setupEventsLabel()
         setupCollectionView()
         setupButton()
+        setupEditProfileButton()
     }
     
     private func setupImageView() {
@@ -203,6 +219,14 @@ class ProfileView: UIView {
             button.leadingAnchor.constraint(equalTo: imageView.trailingAnchor),
             button.widthAnchor.constraint(equalToConstant: 30),
             button.heightAnchor.constraint(equalToConstant: 30)])
+    }
+    
+    private func setupEditProfileButton() {
+        addSubview(editProfileButton)
+        editProfileButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            editProfileButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            editProfileButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)])
     }
     
     
