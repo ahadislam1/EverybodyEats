@@ -12,17 +12,18 @@ class EventFeedView: UIView {
     
     
     public lazy var allergenCollectionView: UICollectionView = {
-       let cv = UICollectionView()
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return cv
     }()
     
     public lazy var eventCollectionView: UICollectionView = {
-    let cv = UICollectionView()
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .vertical
+    let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return cv
     }()
-    
-    
-   
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)

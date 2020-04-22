@@ -38,7 +38,7 @@ class EventViewController: UIViewController {
         private func configureCollectionView() {
             
             
-            eventFeedView.eventCollectionView.register(UINib(nibName: "EventCell", bundle: nil), forCellWithReuseIdentifier: "eventCell")
+            eventFeedView.eventCollectionView.register(EventCell.self, forCellWithReuseIdentifier: "eventCell")
             eventFeedView.eventCollectionView.dataSource = self
             eventFeedView.eventCollectionView.delegate = self
             eventFeedView.allergenCollectionView.dataSource = self
