@@ -12,8 +12,7 @@ class EventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBlue
-
+     configureCollectionView()
     }
     
     
@@ -28,28 +27,21 @@ class EventViewController: UIViewController {
                 }
             }
         }
-        
-        @IBOutlet weak var eventCollectionView: UICollectionView!
-        
+                
         
         override func loadView() {
             view = eventFeedView
         }
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            configureCollectionView()
-            
-            
-        }
+       
         
         
         private func configureCollectionView() {
             
             
-            eventCollectionView.register(UINib(nibName: "EventCell", bundle: nil), forCellWithReuseIdentifier: "eventCell")
+            eventFeedView.eventCollectionView.register(UINib(nibName: "EventCell", bundle: nil), forCellWithReuseIdentifier: "eventCell")
             eventFeedView.eventCollectionView.dataSource = self
             eventFeedView.eventCollectionView.delegate = self
+            eventFeedView.allergenCollectionView.dataSource = self
             
         }
         
@@ -57,7 +49,7 @@ class EventViewController: UIViewController {
         
     }
 
-    extension EventFeedViewController: UICollectionViewDataSource {
+    extension EventViewController: UICollectionViewDataSource {
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             allergens.count
         }
@@ -65,13 +57,13 @@ class EventViewController: UIViewController {
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             
             if collectionView == eventFeedView.allergenCollectionView {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "allergenCell", for: indexPath) as? EventCell else {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "allergenCell", for: indexPath) as? AllergenCell else {
                     // needs to be of type Allergen Cell
                     fatalError("Unable to dequeue Allergy Cell")
                 }
                 let event = events[indexPath.row]
                 //TODO: Configure Cell`
-                cell.configureCell(with: event)
+//                cell.configureCell(with: event)
                 
                 return cell
             } else {
@@ -80,7 +72,7 @@ class EventViewController: UIViewController {
                 }
                 let event = events[indexPath.row]
                 //TODO: Configure Cell`
-                cell.configureCell(with: event)
+//                cell.configureCell(with: event)
                 
                 return cell
                 
@@ -92,7 +84,7 @@ class EventViewController: UIViewController {
         
     }
 
-    extension EventFeedViewController: UICollectionViewDelegateFlowLayout {
+    extension EventViewController: UICollectionViewDelegateFlowLayout {
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             let maxSize: CGSize = UIScreen.main.bounds.size // max width and height of device
             let itemWidth: CGFloat = maxSize.width
