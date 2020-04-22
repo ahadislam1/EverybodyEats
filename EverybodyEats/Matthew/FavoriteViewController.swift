@@ -25,7 +25,7 @@ class FavoriteViewController: UIViewController {
 
     @objc
     func presentDetails () {
-        self.present(DetailViewController(), animated: true)
+        //TODO: Present a Detail View Controller.
     }
 }
 
