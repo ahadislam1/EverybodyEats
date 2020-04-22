@@ -10,6 +10,14 @@ import UIKit
 
 class FavoriteView: UIView {
     
+    public lazy var segmentedControl: UISegmentedControl = {
+        let segmentItems = ["Posts", "Events"]
+        let sc = UISegmentedControl(items: segmentItems)
+        sc.backgroundColor = .systemGreen
+        sc.selectedSegmentIndex = 0
+        return sc
+    }()
+    
     public lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -30,15 +38,26 @@ class FavoriteView: UIView {
     }
     
     private func commonInit() {
+        setupSegmentedControl()
         setupCollectionView()
+    }
+    
+    private func setupSegmentedControl() {
+        addSubview(segmentedControl)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            segmentedControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            segmentedControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+        ])
     }
     
     private func setupCollectionView() {
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor)
         ])
