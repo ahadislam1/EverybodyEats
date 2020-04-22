@@ -10,7 +10,19 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private lazy var profileView = ProfileView()
+    private lazy var profileView: ProfileView = {
+        let pv = ProfileView()
+        pv.collectionView.delegate = self
+        pv.collectionView.dataSource = self
+        pv.delegate = self
+        return pv
+    }()
+    
+    private lazy var imagePickerController: UIImagePickerController = {
+        let ip = UIImagePickerController()
+        ip.delegate = self
+        return ip
+    }()
     
     override func loadView() {
         view = profileView
@@ -19,8 +31,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
-        profileView.collectionView.delegate = self
-        profileView.collectionView.dataSource = self
     }
 
 }
@@ -51,6 +61,50 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         20
+    }
+    
+    
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true , completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        profileView.imageView.image = image
+        //TODO: Handle set image in firebase.
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ProfileViewController: ProfileViewDelegate {
+    func didPressButton() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+               let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+               let cameraAction = UIAlertAction(title: "Camera", style: .default) { [weak self] _ in
+                   self?.showPicker(sourceType: .camera)
+               }
+               let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { [weak self] _ in
+                   self?.showPicker(sourceType: .photoLibrary)
+               }
+               
+               if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                   alertController.addAction(cameraAction)
+               }
+               
+               alertController.addAction(libraryAction)
+               alertController.addAction(cancelAction)
+               present(alertController, animated: true)
+    }
+    
+    private func showPicker(sourceType: UIImagePickerController.SourceType) {
+        imagePickerController.sourceType = sourceType
+        present(imagePickerController, animated: true)
     }
     
     
