@@ -13,7 +13,7 @@ class FeedViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-     private let databaseService = PostDatabaseService()
+    private let databaseService = PostDatabaseService.helper
     
      private var listener: ListenerRegistration?
     
@@ -42,18 +42,8 @@ class FeedViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-      super.viewDidAppear(true)
-      listener = Firestore.firestore().collection(PostDatabaseService.userPostsCollection).addSnapshotListener({ [weak self] (snapshot, error) in
-        if let error = error {
-          DispatchQueue.main.async {
-            self?.showAlert(title: "Try again later", message: "\(error.localizedDescription)")
-          }
-        } else if let snapshot = snapshot {
-            print("something")
-            //let posts = snapshot.documents.map { Post($0.data()) }
-          //self?.usersPosts = posts
-        }
-      })
+      super.viewDidAppear(animated)
+        
     }
     
     

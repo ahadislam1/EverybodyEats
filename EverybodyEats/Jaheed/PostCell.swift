@@ -49,7 +49,7 @@ class PostCell: UICollectionViewCell {
     
     private func configureCell(for post: Post) {
         currentPost = post
-        updateUI(id: post.id, imageData: post.imageData, caption: post.caption, createdDate: post.createdDate, userHandle: post.userHandle)
+        updateUI(id: post.id, imageData: post.imageURL, caption: post.caption, createdDate: post.createdDate, userHandle: post.userHandle)
     }
     
      private func updateUI(id: String, imageData: String,caption: String, createdDate: Date, userHandle: String){
