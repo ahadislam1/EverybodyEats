@@ -15,6 +15,7 @@ class EventFeedView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .white
         return cv
     }()
     
@@ -22,8 +23,11 @@ class EventFeedView: UIView {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
     let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .orange
         return cv
     }()
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
@@ -36,17 +40,29 @@ class EventFeedView: UIView {
     
     private func commonInit() {
         self.backgroundColor = .systemRed
+        setUpAllergenCVConstraints()
         setupEventCVConstraints()
-        setupEventCVConstraints()
+        
         
     }
     
     private func setUpAllergenCVConstraints() {
-        
+        addSubview(allergenCollectionView)
+               allergenCollectionView.translatesAutoresizingMaskIntoConstraints = false
+               NSLayoutConstraint.activate([
+                allergenCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor), allergenCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor), allergenCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                allergenCollectionView.heightAnchor.constraint(equalToConstant: frame.height / 10)
+               ])
     }
     
     private func setupEventCVConstraints() {
-        
+        addSubview(eventCollectionView)
+        eventCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            eventCollectionView.topAnchor.constraint(equalTo: allergenCollectionView.bottomAnchor), eventCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            eventCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            eventCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }
 
