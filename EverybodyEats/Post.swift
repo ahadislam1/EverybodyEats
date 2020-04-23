@@ -17,9 +17,10 @@ struct Post: Codable {
     let userHandle: String
     let userId: String
     let createdDate: Date
+    let allergen: [String]
     let like: Like
     
-    init(id: String, imageURL: String, caption: String, userHandle: String, userId: String) {
+    init(id: String, imageURL: String, caption: String, userHandle: String, userId: String, allergen: [String]) {
         createdDate = Date()
         like = Like()
         self.imageURL = imageURL
@@ -27,6 +28,7 @@ struct Post: Codable {
         self.userHandle = userHandle
         self.userId = userId
         self.id = id
+        self.allergen = allergen
     }
 }
 
@@ -39,5 +41,6 @@ extension Post {
     self.createdDate = dictionary["createdDate"] as? Date ?? Date()
     self.userId = dictionary["userId"] as? String ?? "no userID"
     self.like = dictionary["like"] as? Like ?? Like(count: 1, favoritedBy: [])
+    self.allergen = dictionary["allergen"] as? [String] ?? [Allergen.other.rawValue]
   }
 }
