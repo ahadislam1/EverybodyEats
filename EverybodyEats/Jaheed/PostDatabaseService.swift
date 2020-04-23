@@ -87,7 +87,7 @@ class PostDatabaseService {
             }
         }
     }
-    
+        
     public func updatePost(post: Post) {
         let docRef = db.collection(PostDatabaseService.postsCollection)
             .document(post.id)
