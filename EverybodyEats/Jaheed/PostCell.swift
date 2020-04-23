@@ -11,7 +11,7 @@ import Firebase
 import Kingfisher
 
 protocol PostCellDelegate: AnyObject {
-    func didSelectUserHandle(_ itemCell: PostCell)
+    func didSelectUserHandle(_ itemCell: PostCell, post: Post)
     func didPressHeartButton(_ button: UIButton, post: Post)
 }
 
@@ -48,7 +48,7 @@ class PostCell: UICollectionViewCell {
     }
     
     @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
-        delegate?.didSelectUserHandle(self)
+        delegate?.didSelectUserHandle(self, post: currentPost)
     }
     
     public func configureCell(for post: Post) {

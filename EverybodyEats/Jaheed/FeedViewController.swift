@@ -138,8 +138,8 @@ extension FeedViewController: PostCellDelegate {
         }
     }
     
-    func didSelectUserHandle(_ itemCell: PostCell) {
-        present(ProfileViewController(), animated: true, completion: nil)
+    func didSelectUserHandle(_ itemCell: PostCell, post: Post) {
+        present(ProfileViewController(userId: post.userId), animated: true, completion: nil)
     }
     
     
