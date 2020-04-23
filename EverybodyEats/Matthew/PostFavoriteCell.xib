@@ -61,17 +61,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BG9-fl-lLU">
+                        <rect key="frame" x="274.5" y="8" width="57.5" height="57.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="BG9-fl-lLU" secondAttribute="height" multiplier="1:1" id="uyp-vX-PhJ"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Klk-GE-1be" firstAttribute="top" secondItem="yCj-i3-KIt" secondAttribute="top" constant="8.5" id="0WD-mn-ebi"/>
                     <constraint firstAttribute="bottom" secondItem="cVr-Ud-HTH" secondAttribute="bottom" constant="21" id="1W7-BW-pYG"/>
                     <constraint firstItem="AYH-lN-eyM" firstAttribute="baseline" secondItem="fJE-ds-UZG" secondAttribute="baseline" id="2xy-Fe-daa"/>
                     <constraint firstItem="AYH-lN-eyM" firstAttribute="top" secondItem="fJE-ds-UZG" secondAttribute="top" id="42J-ly-mbL"/>
+                    <constraint firstItem="BG9-fl-lLU" firstAttribute="height" secondItem="yCj-i3-KIt" secondAttribute="height" multiplier="0.15" id="6GF-3B-Esk"/>
                     <constraint firstItem="fJE-ds-UZG" firstAttribute="leading" secondItem="AYH-lN-eyM" secondAttribute="trailing" constant="8" id="905-LE-kH3"/>
                     <constraint firstItem="AYH-lN-eyM" firstAttribute="leading" secondItem="ThL-GM-Mcz" secondAttribute="leading" id="AJc-zf-llm"/>
                     <constraint firstItem="fJE-ds-UZG" firstAttribute="trailing" secondItem="ThL-GM-Mcz" secondAttribute="trailing" id="SLt-5H-0aR"/>
                     <constraint firstItem="AYH-lN-eyM" firstAttribute="centerY" secondItem="fJE-ds-UZG" secondAttribute="centerY" id="Ssw-Oc-6xF"/>
+                    <constraint firstAttribute="trailing" secondItem="BG9-fl-lLU" secondAttribute="trailing" id="Tzc-6t-pLn"/>
                     <constraint firstItem="ThL-GM-Mcz" firstAttribute="top" secondItem="AYH-lN-eyM" secondAttribute="bottom" constant="8" id="UkA-dD-BR3"/>
+                    <constraint firstItem="BG9-fl-lLU" firstAttribute="top" secondItem="yCj-i3-KIt" secondAttribute="top" constant="8" id="WVf-uk-qIU"/>
                     <constraint firstItem="cVr-Ud-HTH" firstAttribute="top" secondItem="K3s-Lr-eL0" secondAttribute="bottom" constant="2" id="XO8-HC-ECn"/>
                     <constraint firstItem="Klk-GE-1be" firstAttribute="centerX" secondItem="ThL-GM-Mcz" secondAttribute="centerX" id="Zao-fh-F3h"/>
                     <constraint firstItem="fJE-ds-UZG" firstAttribute="trailing" secondItem="yCj-i3-KIt" secondAttribute="trailingMargin" id="dFO-wK-Alh"/>
@@ -89,6 +98,7 @@
             <color key="backgroundColor" red="0.65502790580000003" green="0.78271732230000002" blue="0.66940195629999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <size key="customSize" width="332" height="382"/>
             <connections>
+                <outlet property="allergenIndicatorIV" destination="BG9-fl-lLU" id="Cav-DB-oAb"/>
                 <outlet property="captionLabel" destination="K3s-Lr-eL0" id="WgR-Zt-cD0"/>
                 <outlet property="datePostedLabel" destination="cVr-Ud-HTH" id="04b-bt-uIQ"/>
                 <outlet property="favoriteButton" destination="AYH-lN-eyM" id="zjS-Ux-5Rk"/>
@@ -96,7 +106,7 @@
                 <outlet property="likesLabel" destination="fJE-ds-UZG" id="aj3-Gb-3aU"/>
                 <outlet property="userNameLabel" destination="ThL-GM-Mcz" id="sga-Sq-p5v"/>
             </connections>
-            <point key="canvasLocation" x="-177" y="-84"/>
+            <point key="canvasLocation" x="-178.2608695652174" y="-84.375"/>
         </collectionViewCell>
     </objects>
     <resources>
