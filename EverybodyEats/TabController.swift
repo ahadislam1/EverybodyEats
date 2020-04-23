@@ -38,8 +38,8 @@ class TabController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers = [UINavigationController(rootViewController: feedViewController),
-                           UINavigationController(rootViewController: eventViewController),
+        viewControllers = [feedViewController,
+                           eventViewController,
                            favoriteViewController,
                            profileViewController]
     }
