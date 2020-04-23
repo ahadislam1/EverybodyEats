@@ -26,9 +26,7 @@ class FeedViewController: UIViewController {
             }
         }
     }
-    
   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -41,9 +39,20 @@ class FeedViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-      super.viewDidAppear(animated)
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+    }
+    
+    private func loadData() {
+        PostDatabaseService.helper.getPosts { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.showAlert(title: "Error", message: error.localizedDescription)
+            case .success(let posts):
+                self?.usersPosts = posts
+            }
+        }
     }
     
     
@@ -51,7 +60,7 @@ class FeedViewController: UIViewController {
     public func addNavBarImage(){
         let navController = navigationController!
         
-        let image = #imageLiteral(resourceName: "EElogo")
+        let image = #imageLiteral(resourceName: "navImage")
         let imageView = UIImageView(image: image)
         
         let bannerWidth = navController.navigationBar.frame.size.width
@@ -71,7 +80,7 @@ class FeedViewController: UIViewController {
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        usersPosts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,7 +89,9 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
             fatalError("error")
         }
         cell.delegate = self
+        cell.configureCell(for: usersPosts[indexPath.row])
         return cell
+        
         }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -103,6 +114,17 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension FeedViewController: PostCellDelegate {
+    func didPressHeartButton(_ button: UIButton, post: Post) {
+        if button.image(for: .normal) == UIImage(systemName: "heart") {
+            button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            print(true)
+        } else if button.image(for: .normal) == UIImage(systemName: "pencil") {
+            
+        }
+        
+        button.setImage(UIImage(systemName: "pencil"), for: .normal)
+    }
+    
     func didSelectUserHandle(_ itemCell: PostCell) {
         present(ProfileViewController(), animated: true, completion: nil)
     }

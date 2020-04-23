@@ -17,6 +17,7 @@ class ProfileView: UIView {
     
     public lazy var imageView: UIImageView = {
         let iv = UIImageView()
+        iv.kf.indicatorType = .activity
         iv.backgroundColor = .systemOrange
         iv.contentMode = .scaleAspectFill
         iv.image = UIImage(systemName: "person.circle")
