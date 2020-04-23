@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemTeal
+        view.backgroundColor = .systemBackground
         getUser()
     }
     
@@ -48,7 +48,7 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-
+    
 }
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -87,7 +87,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
             let imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL else {
-            return
+                return
         }
         print(imageURL)
         profileView.imageView.image = image
@@ -115,21 +115,21 @@ extension ProfileViewController: ProfileViewDelegate {
     
     func didPressButton() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-               let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-               let cameraAction = UIAlertAction(title: "Camera", style: .default) { [weak self] _ in
-                   self?.showPicker(sourceType: .camera)
-               }
-               let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { [weak self] _ in
-                   self?.showPicker(sourceType: .photoLibrary)
-               }
-               
-               if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                   alertController.addAction(cameraAction)
-               }
-               
-               alertController.addAction(libraryAction)
-               alertController.addAction(cancelAction)
-               present(alertController, animated: true)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { [weak self] _ in
+            self?.showPicker(sourceType: .camera)
+        }
+        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { [weak self] _ in
+            self?.showPicker(sourceType: .photoLibrary)
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            alertController.addAction(cameraAction)
+        }
+        
+        alertController.addAction(libraryAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
     }
     
     private func showPicker(sourceType: UIImagePickerController.SourceType) {
@@ -141,8 +141,7 @@ extension ProfileViewController: ProfileViewDelegate {
 }
 
 extension ProfileViewController: EditProfileViewDelegate {
-    func didPressSaveButton(name: String?, city: String?) {
-        
+    func didPressSaveButton(name: String?, city: String?, bio: String?, allergy: String?) {
         var dict = [AnyHashable: Any]()
         
         if let name = name, !name.isEmpty {
@@ -155,6 +154,14 @@ extension ProfileViewController: EditProfileViewDelegate {
             dict["city"] = city
         }
         
+        if let bio = bio, !bio.isEmpty {
+            profileView.bioTextView.text = bio
+        }
+        
+        if let allergy = allergy, !allergy.isEmpty {
+            profileView.allergenLabel.text = allergy
+        }
+        
         UserDatabaseService.helper.updateUser(id: UserDatabaseService.testUserID, dict: dict) { result in
             switch result {
             case .failure(let error):
@@ -163,7 +170,6 @@ extension ProfileViewController: EditProfileViewDelegate {
                 print(bool)
             }
         }
-
     }
     
     
