@@ -47,21 +47,21 @@ class PostCell: UICollectionViewCell {
         delegate?.didPressHeartButton(sender, post: currentPost)
     }
     
-    @objc private func handleTap(_ gesture: UITapGestureRecognizer){
-        // MARK: CD step 3
+    @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
         delegate?.didSelectUserHandle(self)
     }
     
     public func configureCell(for post: Post) {
         currentPost = post
-        updateUI(id: post.id, imageURL: post.imageURL, caption: post.caption, createdDate: post.createdDate, userHandle: post.userHandle)
+        updateUI(id: post.id, imageURL: post.imageURL, caption: post.caption, createdDate: post.createdDate, userHandle: post.userHandle, like: post.like)
     }
     
-    private func updateUI(id: String, imageURL: String,caption: String, createdDate: Date, userHandle: String){
+    private func updateUI(id: String, imageURL: String,caption: String, createdDate: Date, userHandle: String, like: Like){
         
         postImageView.kf.indicatorType = .activity
         postImageView.kf.setImage(with: URL(string: imageURL))
         userHandleLabel.text = "@\(userHandle)"
+        likesCountLabel.text = "\(Int.random(in: 1...1202040))"
         datePostedLabel.text = createdDate.dateString()
         captionLabel.text = caption
     }

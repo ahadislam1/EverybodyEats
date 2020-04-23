@@ -15,7 +15,7 @@ class FeedViewController: UIViewController {
     
     private let databaseService = PostDatabaseService.helper
     
-     private var listener: ListenerRegistration?
+    private var listener: ListenerRegistration?
     
     private var refreshControl: UIRefreshControl!
     
@@ -26,7 +26,7 @@ class FeedViewController: UIViewController {
             }
         }
     }
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -74,7 +74,7 @@ class FeedViewController: UIViewController {
         navigationItem.titleView = imageView
     }
     //---------------------------
-
+    
 }
 
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
@@ -84,7 +84,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as? PostCell else {
             fatalError("error")
         }
@@ -92,7 +92,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.configureCell(for: usersPosts[indexPath.row])
         return cell
         
-        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -115,14 +115,27 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension FeedViewController: PostCellDelegate {
     func didPressHeartButton(_ button: UIButton, post: Post) {
-        if button.image(for: .normal) == UIImage(systemName: "heart") {
+        if button.image(for: .normal) == UIImage(systemName: "heart.fill") {
+            button.setImage(UIImage(systemName: "heart"), for: .normal)
+            PostDatabaseService.helper.unfavoritePost(userID: User.jaheed.id, postID: post.id) { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    self?.showAlert(title: "Error", message: error.localizedDescription)
+                case .success:
+                    break
+                }
+            }
+        } else {
             button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            print(true)
-        } else if button.image(for: .normal) == UIImage(systemName: "pencil") {
-            
+            PostDatabaseService.helper.favoritePost(userID: User.jaheed.id, post: post) { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    self?.showAlert(title: "Error", message: error.localizedDescription)
+                case .success:
+                    break
+                }
+            }
         }
-        
-        button.setImage(UIImage(systemName: "pencil"), for: .normal)
     }
     
     func didSelectUserHandle(_ itemCell: PostCell) {
