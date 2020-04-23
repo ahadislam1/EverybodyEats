@@ -27,12 +27,13 @@
 		0BCADC15244E8462002EB913 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC14244E8462002EB913 /* Event.swift */; };
 		0BCADC17244E84F8002EB913 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC16244E84F8002EB913 /* Post.swift */; };
 		0BCADC19244E8575002EB913 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC18244E8575002EB913 /* Like.swift */; };
+		0BF972422451DB8E00246DD6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BF972412451DB8E00246DD6 /* GoogleService-Info.plist */; };
+		0BF972442451DBD200246DD6 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF972432451DBD200246DD6 /* UIColor+Hex.swift */; };
 		0C919F6A244E72BB00826E45 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F69244E72BB00826E45 /* FavoriteView.swift */; };
 		0C919F6E244E770100826E45 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F6D244E770100826E45 /* ItemCell.xib */; };
 		0C919F70244E823100826E45 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F6F244E823100826E45 /* ItemCell.swift */; };
 		0C919F7A2450C85600826E45 /* PostFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F792450C85600826E45 /* PostFavoriteCell.xib */; };
 		0C919F7C2450CDD300826E45 /* PostFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F7B2450CDD300826E45 /* PostFavoriteCell.swift */; };
-		0C919F802451304600826E45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F7F2451304600826E45 /* GoogleService-Info.plist */; };
 		0C919F822451595800826E45 /* Allergen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F812451595800826E45 /* Allergen.swift */; };
 		303A170424508DCA00587485 /* UIImage+ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A170324508DCA00587485 /* UIImage+ResizeImage.swift */; };
 		303A17062450D4B800587485 /* Date+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A17052450D4B800587485 /* Date+Extention.swift */; };
@@ -88,12 +89,13 @@
 		0BCADC14244E8462002EB913 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0BCADC16244E84F8002EB913 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0BCADC18244E8575002EB913 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		0BF972412451DB8E00246DD6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0BF972432451DBD200246DD6 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		0C919F69244E72BB00826E45 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		0C919F6D244E770100826E45 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		0C919F6F244E823100826E45 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		0C919F792450C85600826E45 /* PostFavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostFavoriteCell.xib; sourceTree = "<group>"; };
 		0C919F7B2450CDD300826E45 /* PostFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFavoriteCell.swift; sourceTree = "<group>"; };
-		0C919F7F2451304600826E45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C919F812451595800826E45 /* Allergen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allergen.swift; sourceTree = "<group>"; };
 		15822ACD2A77028FE698AC97 /* Pods-EverybodyEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEats.release.xcconfig"; path = "Target Support Files/Pods-EverybodyEats/Pods-EverybodyEats.release.xcconfig"; sourceTree = "<group>"; };
 		168A8C042D768CFA07555BF5 /* Pods_EverybodyEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EverybodyEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 				0B5055CD2450CAE500C41E12 /* StorageService.swift */,
 				0B7EF19F244FE3E8004A06E8 /* EditProfileView.swift */,
 				0B5055CF2450E58800C41E12 /* UserDatabaseService.swift */,
+				0BF972432451DBD200246DD6 /* UIColor+Hex.swift */,
 				0B096617244E51D400FB4A68 /* TitleReusableView.swift */,
 			);
 			path = Ahad;
@@ -212,7 +215,7 @@
 		0B712A6D244DEB94004FD62B /* EverybodyEats */ = {
 			isa = PBXGroup;
 			children = (
-				0C919F7F2451304600826E45 /* GoogleService-Info.plist */,
+				0BF972412451DB8E00246DD6 /* GoogleService-Info.plist */,
 				0B712A6E244DEB94004FD62B /* AppDelegate.swift */,
 				0B712A70244DEB94004FD62B /* SceneDelegate.swift */,
 				0B096611244E2F8500FB4A68 /* Jaheed */,
@@ -346,7 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30584AE1244FA634009225FD /* PostSB.storyboard in Resources */,
-				0C919F802451304600826E45 /* GoogleService-Info.plist in Resources */,
+				0BF972422451DB8E00246DD6 /* GoogleService-Info.plist in Resources */,
 				0B712A7B244DEB97004FD62B /* LaunchScreen.storyboard in Resources */,
 				30B5BF82245003A600480378 /* (null) in Resources */,
 				0C919F7A2450C85600826E45 /* PostFavoriteCell.xib in Resources */,
@@ -460,6 +463,7 @@
 				30A8852D244FBA8400B582C0 /* PostDatabaseService.swift in Sources */,
 				0B09660C244E29B100FB4A68 /* EventViewController.swift in Sources */,
 				6B857113245094060085080F /* EventDetailView.swift in Sources */,
+				0BF972442451DBD200246DD6 /* UIColor+Hex.swift in Sources */,
 				0C919F6A244E72BB00826E45 /* FavoriteView.swift in Sources */,
 				0B096618244E51D400FB4A68 /* TitleReusableView.swift in Sources */,
 				6B8571152450953C0085080F /* EventCell.swift in Sources */,
