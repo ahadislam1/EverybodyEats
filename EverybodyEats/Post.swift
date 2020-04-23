@@ -15,16 +15,18 @@ struct Post: Codable {
     let imageURL: String
     let caption: String
     let userHandle: String
+    let userId: String
     let createdDate: Date
     let like: Like
     
-    init(imageURL: String, caption: String, userHandle: String) {
-        id = UUID().uuidString
+    init(id: String, imageURL: String, caption: String, userHandle: String, userId: String) {
         createdDate = Date()
         like = Like()
         self.imageURL = imageURL
         self.caption = caption
         self.userHandle = userHandle
+        self.userId = userId
+        self.id = id
     }
 }
 

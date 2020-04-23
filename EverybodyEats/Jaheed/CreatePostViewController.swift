@@ -27,6 +27,8 @@ class CreatePostViewController: UIViewController {
     private let dbService = PostDatabaseService.helper
     //private let storageService = StorageService()
     
+    private var imageURL: URL!
+    
     private lazy var imagePickerController: UIImagePickerController = {
         let picker = UIImagePickerController()
         picker.delegate = self // confomrm to UIImagePickerContorllerDelegate and UINavigationControllerDelegate
@@ -86,8 +88,25 @@ class CreatePostViewController: UIViewController {
             return
         }
         
-         // resize image before uploading to Storage
-        let resizedImage = UIImage.resizeImage(originalImage: selectedImage, rect: sharePostImageView.bounds)
+        let user = User.jaheed
+        let id = UUID().uuidString
+        StorageService.helper.uploadPhoto(id: id, experience: .post, imageURL: imageURL) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.showAlert(title: "Error", message: error.localizedDescription)
+            case .success(let url):
+                let post = Post(id: id, imageURL: url.absoluteString, caption: caption, userHandle: user.displayName, userId: user.id)
+                PostDatabaseService.helper.createPost(post: post) { [weak self] result in
+                    switch result {
+                    case .failure(let error):
+                        self?.showAlert(title: "Error", message: error.localizedDescription)
+                    case .success:
+                        break
+                    }
+                }
+            }
+        }
+        dismiss(animated: true, completion: nil)
         
     }
     
@@ -119,9 +138,11 @@ class CreatePostViewController: UIViewController {
 
 extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+            let imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL else {
             fatalError("could not attain original image")
         }
+        self.imageURL = imageURL
         selectedImage = image
         dismiss(animated: true)
     }
