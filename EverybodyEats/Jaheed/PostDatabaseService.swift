@@ -59,6 +59,7 @@ class PostDatabaseService {
         
         docRef.setData(["imageURL": post.imageURL,
                                 "caption": post.caption,
+                                "userId": post.userId,
                                 "userHandle": post.userHandle,
                                 "createdDate": post.createdDate,
                                 "like": ["count": post.like.count,
