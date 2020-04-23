@@ -47,6 +47,10 @@ class FavoriteViewController: UIViewController {
         view = favoriteView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getFavorites()
+    }
+    
     @objc
     func presentDetails () {
         //TODO: Present a Detail View Controller.
