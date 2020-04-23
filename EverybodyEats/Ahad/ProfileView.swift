@@ -31,7 +31,7 @@ class ProfileView: UIView {
         return b
     }()
     
-    private lazy var editProfileButton: UIButton = {
+    public lazy var editProfileButton: UIButton = {
         let b = UIButton()
         b.setTitle("Edit Profile", for: .normal)
         b.setTitleColor(.systemBlue, for: .normal)
@@ -88,7 +88,7 @@ class ProfileView: UIView {
     
     private lazy var allergenTitleLabel: UILabel = {
         let l = UILabel()
-        l.text = "Bio"
+        l.text = "Allergy"
         l.font = UIFont.preferredFont(forTextStyle: .headline).withSize(36)
         return l
     }()
@@ -135,6 +135,7 @@ class ProfileView: UIView {
         configureCardLayer()
         configureImageLayer()
         configureButtonLayer()
+        configureEditButtonLayer()
     }
     
     @objc
@@ -163,6 +164,13 @@ class ProfileView: UIView {
         button.layer.cornerRadius = button.bounds.width / 2
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.systemBlue.cgColor
+    }
+    
+    fileprivate func configureEditButtonLayer() {
+        editProfileButton.layer.masksToBounds = true
+        editProfileButton.layer.cornerRadius = 12
+        editProfileButton.layer.borderWidth = 2
+        editProfileButton.layer.borderColor = UIColor.systemBlue.cgColor
     }
     
     private func configureView() {
@@ -299,7 +307,8 @@ class ProfileView: UIView {
         editProfileButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             editProfileButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            editProfileButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)])
+            editProfileButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            editProfileButton.widthAnchor.constraint(equalToConstant: editProfileButton.intrinsicContentSize.width + 5)])
     }
     
     

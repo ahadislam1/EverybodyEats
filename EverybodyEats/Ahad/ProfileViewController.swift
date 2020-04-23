@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        getUser()
+        getUser(userId: userId)
     }
     
     init() {
@@ -53,15 +53,20 @@ class ProfileViewController: UIViewController {
     }
     
     private func getUser(userId: String? = nil) {
+        
         if let userId = userId {
+            profileView.editProfileButton.isHidden = true
+            print("this happened")
             UserDatabaseService.helper.getUser(id: userId) { [weak self] result in
                 switch result {
                 case .failure(let error):
                     print(error)
                 case .success(let user):
-                    if let urlString = user.photoURL, let url = URL(string: urlString) {
-                        self?.profileView.imageView.kf.setImage(with: url)
+                    if let urlString = user.photoURL {
+                    self?.profileView.imageView.kf.setImage(with: URL(string: urlString))
                     }
+                    self?.profileView.cityLabel.text = user.city
+                    self?.profileView.displayLabel.text = user.displayName
                 }
             }
         } else {
@@ -72,6 +77,9 @@ class ProfileViewController: UIViewController {
                 case .success(let user):
                     if let urlString = user.photoURL, let url = URL(string: urlString) {
                         self?.profileView.imageView.kf.setImage(with: url)
+                        self?.profileView.cityLabel.text = user.city
+                        self?.profileView.displayLabel.text = user.displayName
+
                     }
                 }
             }
@@ -93,7 +101,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: view.frame.width / 2, height: view.frame.width / 2)
+        CGSize(width: view.frame.width / 4, height: view.frame.width / 4)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
