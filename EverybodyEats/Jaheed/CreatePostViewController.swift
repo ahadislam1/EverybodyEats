@@ -95,7 +95,7 @@ class CreatePostViewController: UIViewController {
             case .failure(let error):
                 self?.showAlert(title: "Error", message: error.localizedDescription)
             case .success(let url):
-                let post = Post(id: id, imageURL: url.absoluteString, caption: caption, userHandle: user.displayName, userId: user.id)
+                let post = Post(id: id, imageURL: url.absoluteString, caption: caption, userHandle: user.displayName, userId: user.id, allergen: [""])
                 PostDatabaseService.helper.createPost(post: post) { [weak self] result in
                     switch result {
                     case .failure(let error):
