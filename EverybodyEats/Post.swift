@@ -28,13 +28,13 @@ struct Post: Codable {
     }
 }
 
-//extension Post {
-//  init(_ dictionary: [String: Any]) {
-//    self.id = dictionary["id"] as? String ?? "no id"
-//    self.imageData = dictionary["imageData"] as? Data ?? Data.init()
-//    self.caption = dictionary["caption"] as? String ?? "no caption"
-//    self.userHandle = dictionary["userHandle"] as? String ?? "no userHandle"
-//    self.createdDate = dictionary["createdDate"] as? String ?? "no created date"
-//    self.likes = dictionary["likes"] as? Like ?? Like.self
-//  }
-//}
+extension Post {
+  init(_ dictionary: [String: Any]) {
+    self.id = dictionary["id"] as? String ?? "no id"
+    self.imageURL = dictionary["imageURL"] as? String ?? " no imageURL"
+    self.caption = dictionary["caption"] as? String ?? "no caption"
+    self.userHandle = dictionary["userHandle"] as? String ?? "no userHandle"
+    self.createdDate = dictionary["createdDate"] as? Date ?? Date()
+    self.like = dictionary["like"] as? Like ?? Like(count: 1, favoritedBy: [])
+  }
+}

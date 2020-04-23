@@ -16,4 +16,11 @@ class PostFavoriteCell: UICollectionViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var datePostedLabel: UILabel!
+    
+    public func configureCell(post: Post) {
+        likesLabel.text = String(post.like.count)
+        userNameLabel.text = post.userHandle
+        captionLabel.text = post.caption
+        datePostedLabel.text = post.createdDate.dateString()
+    }
 }
