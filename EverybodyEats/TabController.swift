@@ -17,11 +17,12 @@ class TabController: UITabBarController {
         return vc
     }()
     
-    lazy var eventViewController: EventViewController = {
-        let vc = EventViewController()
-        vc.tabBarItem = UITabBarItem(title: "Event", image: UIImage(systemName: "trash"), tag: 1)
-        return vc
-    }()
+     lazy var eventViewController: UIViewController = {
+           let storyboard = UIStoryboard(name: "EventSB", bundle: nil)
+           let vc = storyboard.instantiateInitialViewController()  ?? EventViewController()
+           vc.tabBarItem = UITabBarItem(title: "Event", image: UIImage(systemName: "mic"), tag: 1)
+           return vc
+       }()
     
     lazy var favoriteViewController: FavoriteViewController = {
         let vc = FavoriteViewController()
