@@ -13,9 +13,11 @@ class FeedViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-     private let databaseService = PostDatabaseService()
+    private let databaseService = PostDatabaseService.helper
     
-     private var listener: ListenerRegistration?
+    private var listener: ListenerRegistration?
+    
+    private var refreshControl: UIRefreshControl!
     
     var usersPosts = [Post](){
         didSet{
@@ -25,11 +27,10 @@ class FeedViewController: UIViewController {
         }
     }
     
-  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        addNavBarImage()
     }
     
     private func configureCollectionView(){
@@ -38,35 +39,60 @@ class FeedViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-      super.viewDidAppear(true)
-      listener = Firestore.firestore().collection(PostDatabaseService.userPostsCollection).addSnapshotListener({ [weak self] (snapshot, error) in
-        if let error = error {
-          DispatchQueue.main.async {
-            self?.showAlert(title: "Try again later", message: "\(error.localizedDescription)")
-          }
-        } else if let snapshot = snapshot {
-         // let posts = snapshot.documents.map { Post($0.data()) }
-         // self?.usersPosts = posts
-        }
-      })
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
     }
-
+    
+    private func loadData() {
+        PostDatabaseService.helper.getPosts { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.showAlert(title: "Error", message: error.localizedDescription)
+            case .success(let posts):
+                self?.usersPosts = posts
+            }
+        }
+    }
+    
+    
+    //---------------------------
+    public func addNavBarImage(){
+        let navController = navigationController!
+        
+        let image = #imageLiteral(resourceName: "navImage")
+        let imageView = UIImageView(image: image)
+        
+        let bannerWidth = navController.navigationBar.frame.size.width
+        let bannerHeight = navController.navigationBar.frame.size.height
+        
+        let bannerX = bannerWidth / 2 - image.size.width / 2
+        let bannerY = bannerHeight / 2 - image.size.height / 2
+        
+        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth, height: bannerHeight)
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = imageView
+    }
+    //---------------------------
+    
 }
 
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        usersPosts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as? PostCell else {
             fatalError("error")
         }
+        cell.delegate = self
+        cell.configureCell(for: usersPosts[indexPath.row])
         return cell
-        }
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -86,7 +112,38 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
 }
+
+extension FeedViewController: PostCellDelegate {
+    func didPressHeartButton(_ button: UIButton, post: Post) {
+        if button.image(for: .normal) == UIImage(systemName: "heart.fill") {
+            button.setImage(UIImage(systemName: "heart"), for: .normal)
+            PostDatabaseService.helper.unfavoritePost(userID: User.jaheed.id, postID: post.id) { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    self?.showAlert(title: "Error", message: error.localizedDescription)
+                case .success:
+                    break
+                }
+            }
+        } else {
+            button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            PostDatabaseService.helper.favoritePost(userID: User.jaheed.id, post: post) { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    self?.showAlert(title: "Error", message: error.localizedDescription)
+                case .success:
+                    break
+                }
+            }
+        }
+    }
     
+    func didSelectUserHandle(_ itemCell: PostCell) {
+        present(ProfileViewController(), animated: true, completion: nil)
+    }
+    
+    
+}
 
 
 

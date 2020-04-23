@@ -14,8 +14,8 @@
 		0B096610244E29ED00FB4A68 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B09660F244E29ED00FB4A68 /* CreatePostViewController.swift */; };
 		0B096616244E3F8600FB4A68 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B096615244E3F8600FB4A68 /* ProfileView.swift */; };
 		0B096618244E51D400FB4A68 /* TitleReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B096617244E51D400FB4A68 /* TitleReusableView.swift */; };
-		0B09661A244E521D00FB4A68 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B096619244E521D00FB4A68 /* EventCell.swift */; };
-		0B480975244F86B5002AE2E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B480974244F86B5002AE2E0 /* GoogleService-Info.plist */; };
+		0B5055CE2450CAE500C41E12 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5055CD2450CAE500C41E12 /* StorageService.swift */; };
+		0B5055D02450E58800C41E12 /* UserDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5055CF2450E58800C41E12 /* UserDatabaseService.swift */; };
 		0B712A6F244DEB94004FD62B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B712A6E244DEB94004FD62B /* AppDelegate.swift */; };
 		0B712A71244DEB94004FD62B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B712A70244DEB94004FD62B /* SceneDelegate.swift */; };
 		0B712A73244DEB94004FD62B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B712A72244DEB94004FD62B /* FeedViewController.swift */; };
@@ -30,12 +30,23 @@
 		0C919F6A244E72BB00826E45 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F69244E72BB00826E45 /* FavoriteView.swift */; };
 		0C919F6E244E770100826E45 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F6D244E770100826E45 /* ItemCell.xib */; };
 		0C919F70244E823100826E45 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F6F244E823100826E45 /* ItemCell.swift */; };
-		0C919F72244FC51700826E45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F71244FC51700826E45 /* GoogleService-Info.plist */; };
+		0C919F7A2450C85600826E45 /* PostFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F792450C85600826E45 /* PostFavoriteCell.xib */; };
+		0C919F7C2450CDD300826E45 /* PostFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F7B2450CDD300826E45 /* PostFavoriteCell.swift */; };
+		0C919F802451304600826E45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F7F2451304600826E45 /* GoogleService-Info.plist */; };
+		303A170424508DCA00587485 /* UIImage+ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A170324508DCA00587485 /* UIImage+ResizeImage.swift */; };
+		303A17062450D4B800587485 /* Date+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A17052450D4B800587485 /* Date+Extention.swift */; };
 		30584AE1244FA634009225FD /* PostSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30584AE0244FA634009225FD /* PostSB.storyboard */; };
 		30A8852D244FBA8400B582C0 /* PostDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */; };
-		30A8852F244FCBF600B582C0 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8852E244FCBF600B582C0 /* ShowAlert.swift */; };
-		30DE01A5244EAB3C00BD5194 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE01A4244EAB3C00BD5194 /* FeedView.swift */; };
+		30A8852F244FCBF600B582C0 /* UIAlertController+ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8852E244FCBF600B582C0 /* UIAlertController+ShowAlert.swift */; };
+		30B5BF82245003A600480378 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		30DE01A5244EAB3C00BD5194 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		30DE01A7244EB56700BD5194 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE01A6244EB56700BD5194 /* PostCell.swift */; };
+		6B85710D245093470085080F /* EventFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B85710C245093470085080F /* EventFeedView.swift */; };
+		6B85710F245093A80085080F /* AllergenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B85710E245093A80085080F /* AllergenCell.swift */; };
+		6B857111245093E10085080F /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B857110245093E10085080F /* EventDetailViewController.swift */; };
+		6B857113245094060085080F /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B857112245094060085080F /* EventDetailView.swift */; };
+		6B8571152450953C0085080F /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8571142450953C0085080F /* EventCell.swift */; };
+		6B8571172450954A0085080F /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8571162450954A0085080F /* EventCell.xib */; };
 		96C553B2A46B11F38315E338 /* Pods_EverybodyEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168A8C042D768CFA07555BF5 /* Pods_EverybodyEats.framework */; };
 		B3A3225093B9F7BA819165BA /* Pods_EverybodyEatsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC26D6E78BFF791436099A2 /* Pods_EverybodyEatsTests.framework */; };
 /* End PBXBuildFile section */
@@ -59,8 +70,8 @@
 		0B09660F244E29ED00FB4A68 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		0B096615244E3F8600FB4A68 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0B096617244E51D400FB4A68 /* TitleReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleReusableView.swift; sourceTree = "<group>"; };
-		0B096619244E521D00FB4A68 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
-		0B480974244F86B5002AE2E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0B5055CD2450CAE500C41E12 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		0B5055CF2450E58800C41E12 /* UserDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabaseService.swift; sourceTree = "<group>"; };
 		0B712A6B244DEB94004FD62B /* EverybodyEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EverybodyEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B712A6E244DEB94004FD62B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B712A70244DEB94004FD62B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,14 +90,23 @@
 		0C919F69244E72BB00826E45 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		0C919F6D244E770100826E45 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		0C919F6F244E823100826E45 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
-		0C919F71244FC51700826E45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C919F792450C85600826E45 /* PostFavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostFavoriteCell.xib; sourceTree = "<group>"; };
+		0C919F7B2450CDD300826E45 /* PostFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFavoriteCell.swift; sourceTree = "<group>"; };
+		0C919F7F2451304600826E45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		15822ACD2A77028FE698AC97 /* Pods-EverybodyEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEats.release.xcconfig"; path = "Target Support Files/Pods-EverybodyEats/Pods-EverybodyEats.release.xcconfig"; sourceTree = "<group>"; };
 		168A8C042D768CFA07555BF5 /* Pods_EverybodyEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EverybodyEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		303A170324508DCA00587485 /* UIImage+ResizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ResizeImage.swift"; sourceTree = "<group>"; };
+		303A17052450D4B800587485 /* Date+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extention.swift"; sourceTree = "<group>"; };
 		30584AE0244FA634009225FD /* PostSB.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostSB.storyboard; sourceTree = "<group>"; };
 		30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatabaseService.swift; sourceTree = "<group>"; };
-		30A8852E244FCBF600B582C0 /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
-		30DE01A4244EAB3C00BD5194 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		30A8852E244FCBF600B582C0 /* UIAlertController+ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+ShowAlert.swift"; sourceTree = "<group>"; };
 		30DE01A6244EB56700BD5194 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		6B85710C245093470085080F /* EventFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedView.swift; sourceTree = "<group>"; };
+		6B85710E245093A80085080F /* AllergenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergenCell.swift; sourceTree = "<group>"; };
+		6B857110245093E10085080F /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		6B857112245094060085080F /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		6B8571142450953C0085080F /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		6B8571162450954A0085080F /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		84903AA73DBEAF787D2F3932 /* Pods-EverybodyEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEats.debug.xcconfig"; path = "Target Support Files/Pods-EverybodyEats/Pods-EverybodyEats.debug.xcconfig"; sourceTree = "<group>"; };
 		9DCB99F864A39AAC7FDED5D7 /* Pods-EverybodyEatsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverybodyEatsTests.release.xcconfig"; path = "Target Support Files/Pods-EverybodyEatsTests/Pods-EverybodyEatsTests.release.xcconfig"; sourceTree = "<group>"; };
 		EFC26D6E78BFF791436099A2 /* Pods_EverybodyEatsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EverybodyEatsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,11 +135,12 @@
 		0B096611244E2F8500FB4A68 /* Jaheed */ = {
 			isa = PBXGroup;
 			children = (
-				30A8852E244FCBF600B582C0 /* ShowAlert.swift */,
+				30A8852E244FCBF600B582C0 /* UIAlertController+ShowAlert.swift */,
+				303A170324508DCA00587485 /* UIImage+ResizeImage.swift */,
+				303A17052450D4B800587485 /* Date+Extention.swift */,
 				30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */,
 				0B712A72244DEB94004FD62B /* FeedViewController.swift */,
 				0B09660F244E29ED00FB4A68 /* CreatePostViewController.swift */,
-				30DE01A4244EAB3C00BD5194 /* FeedView.swift */,
 				30DE01A6244EB56700BD5194 /* PostCell.swift */,
 				30584AE0244FA634009225FD /* PostSB.storyboard */,
 			);
@@ -129,6 +150,13 @@
 		0B096612244E2F9200FB4A68 /* Chelsi */ = {
 			isa = PBXGroup;
 			children = (
+				0B09660B244E29B100FB4A68 /* EventViewController.swift */,
+				6B85710C245093470085080F /* EventFeedView.swift */,
+				6B857110245093E10085080F /* EventDetailViewController.swift */,
+				6B857112245094060085080F /* EventDetailView.swift */,
+				6B85710E245093A80085080F /* AllergenCell.swift */,
+				6B8571142450953C0085080F /* EventCell.swift */,
+				6B8571162450954A0085080F /* EventCell.xib */,
 			);
 			path = Chelsi;
 			sourceTree = "<group>";
@@ -140,6 +168,8 @@
 				0C919F69244E72BB00826E45 /* FavoriteView.swift */,
 				0C919F6D244E770100826E45 /* ItemCell.xib */,
 				0C919F6F244E823100826E45 /* ItemCell.swift */,
+				0C919F792450C85600826E45 /* PostFavoriteCell.xib */,
+				0C919F7B2450CDD300826E45 /* PostFavoriteCell.swift */,
 			);
 			path = Matthew;
 			sourceTree = "<group>";
@@ -148,11 +178,11 @@
 			isa = PBXGroup;
 			children = (
 				0B096609244E298700FB4A68 /* ProfileViewController.swift */,
-				0B09660B244E29B100FB4A68 /* EventViewController.swift */,
 				0B096615244E3F8600FB4A68 /* ProfileView.swift */,
+				0B5055CD2450CAE500C41E12 /* StorageService.swift */,
 				0B7EF19F244FE3E8004A06E8 /* EditProfileView.swift */,
+				0B5055CF2450E58800C41E12 /* UserDatabaseService.swift */,
 				0B096617244E51D400FB4A68 /* TitleReusableView.swift */,
-				0B096619244E521D00FB4A68 /* EventCell.swift */,
 			);
 			path = Ahad;
 			sourceTree = "<group>";
@@ -180,7 +210,7 @@
 		0B712A6D244DEB94004FD62B /* EverybodyEats */ = {
 			isa = PBXGroup;
 			children = (
-				0C919F71244FC51700826E45 /* GoogleService-Info.plist */,
+				0C919F7F2451304600826E45 /* GoogleService-Info.plist */,
 				0B712A6E244DEB94004FD62B /* AppDelegate.swift */,
 				0B712A70244DEB94004FD62B /* SceneDelegate.swift */,
 				0B096611244E2F8500FB4A68 /* Jaheed */,
@@ -313,10 +343,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				30584AE1244FA634009225FD /* PostSB.storyboard in Resources */,
+				0C919F802451304600826E45 /* GoogleService-Info.plist in Resources */,
 				0B712A7B244DEB97004FD62B /* LaunchScreen.storyboard in Resources */,
-				0C919F72244FC51700826E45 /* GoogleService-Info.plist in Resources */,
+				30B5BF82245003A600480378 /* (null) in Resources */,
+				0C919F7A2450C85600826E45 /* PostFavoriteCell.xib in Resources */,
 				0C919F6E244E770100826E45 /* ItemCell.xib in Resources */,
 				0B712A78244DEB97004FD62B /* Assets.xcassets in Resources */,
+				6B8571172450954A0085080F /* EventCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +431,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303A170424508DCA00587485 /* UIImage+ResizeImage.swift in Sources */,
 				30DE01A7244EB56700BD5194 /* PostCell.swift in Sources */,
+				0B5055D02450E58800C41E12 /* UserDatabaseService.swift in Sources */,
 				0B712A73244DEB94004FD62B /* FeedViewController.swift in Sources */,
 				0BCADC17244E84F8002EB913 /* Post.swift in Sources */,
 				0BCADC15244E8462002EB913 /* Event.swift in Sources */,
@@ -407,19 +442,26 @@
 				0B096608244E297600FB4A68 /* TabController.swift in Sources */,
 				0B09660A244E298700FB4A68 /* ProfileViewController.swift in Sources */,
 				0B09660E244E29C600FB4A68 /* FavoriteViewController.swift in Sources */,
+				303A17062450D4B800587485 /* Date+Extention.swift in Sources */,
 				0C919F70244E823100826E45 /* ItemCell.swift in Sources */,
 				0B7EF1A0244FE3E8004A06E8 /* EditProfileView.swift in Sources */,
-				30DE01A5244EAB3C00BD5194 /* FeedView.swift in Sources */,
-				0B09661A244E521D00FB4A68 /* EventCell.swift in Sources */,
+				30DE01A5244EAB3C00BD5194 /* (null) in Sources */,
+				0B5055CE2450CAE500C41E12 /* StorageService.swift in Sources */,
+				6B85710F245093A80085080F /* AllergenCell.swift in Sources */,
 				0B712A6F244DEB94004FD62B /* AppDelegate.swift in Sources */,
 				0BCADC13244E8307002EB913 /* User.swift in Sources */,
-				30A8852F244FCBF600B582C0 /* ShowAlert.swift in Sources */,
+				30A8852F244FCBF600B582C0 /* UIAlertController+ShowAlert.swift in Sources */,
 				0B712A71244DEB94004FD62B /* SceneDelegate.swift in Sources */,
+				6B85710D245093470085080F /* EventFeedView.swift in Sources */,
 				30A8852D244FBA8400B582C0 /* PostDatabaseService.swift in Sources */,
 				0B09660C244E29B100FB4A68 /* EventViewController.swift in Sources */,
+				6B857113245094060085080F /* EventDetailView.swift in Sources */,
 				0C919F6A244E72BB00826E45 /* FavoriteView.swift in Sources */,
 				0B096618244E51D400FB4A68 /* TitleReusableView.swift in Sources */,
+				6B8571152450953C0085080F /* EventCell.swift in Sources */,
+				6B857111245093E10085080F /* EventDetailViewController.swift in Sources */,
 				0B096610244E29ED00FB4A68 /* CreatePostViewController.swift in Sources */,
+				0C919F7C2450CDD300826E45 /* PostFavoriteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,13 +615,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HHA5GS3CVN;
+				DEVELOPMENT_TEAM = TTN2293JXM;
 				INFOPLIST_FILE = EverybodyEats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewramos.everybodyeats;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahadislam.EverybodyEats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -592,13 +634,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HHA5GS3CVN;
+				DEVELOPMENT_TEAM = TTN2293JXM;
 				INFOPLIST_FILE = EverybodyEats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewramos.everybodyeats;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahadislam.EverybodyEats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
