@@ -37,6 +37,7 @@ extension Post {
     self.caption = dictionary["caption"] as? String ?? "no caption"
     self.userHandle = dictionary["userHandle"] as? String ?? "no userHandle"
     self.createdDate = dictionary["createdDate"] as? Date ?? Date()
+    self.userId = dictionary["userId"] as? String ?? "no userID"
     self.like = dictionary["like"] as? Like ?? Like(count: 1, favoritedBy: [])
   }
 }
