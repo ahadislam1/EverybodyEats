@@ -14,25 +14,24 @@ protocol ProfileViewDelegate: AnyObject {
 }
 
 class ProfileView: UIView {
-    
     public lazy var imageView: UIImageView = {
         let iv = UIImageView()
         iv.kf.indicatorType = .activity
-        iv.backgroundColor = .systemOrange
+        iv.backgroundColor = .systemBackground
         iv.contentMode = .scaleAspectFill
         iv.image = UIImage(systemName: "person.circle")
         return iv
     }()
     
-    private lazy var button: UIButton = {
+    public lazy var button: UIButton = {
         let b = UIButton()
         b.setImage(UIImage(systemName: "plus"), for: .normal)
         b.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        b.backgroundColor = .systemOrange
+        b.backgroundColor = .systemBackground
         return b
     }()
     
-    private lazy var editProfileButton: UIButton = {
+    public lazy var editProfileButton: UIButton = {
         let b = UIButton()
         b.setTitle("Edit Profile", for: .normal)
         b.setTitleColor(.systemBlue, for: .normal)
@@ -43,14 +42,14 @@ class ProfileView: UIView {
     
     private lazy var cardView: UIView = {
         let v = UIView()
-        v.backgroundColor = .systemPink
+        v.backgroundColor = UIColor(hex: "#9EECC1") ?? UIColor.systemGreen
         return v
     }()
     
     private lazy var titleLabel: UILabel = {
        let l = UILabel()
         l.text = "City"
-        l.font = UIFont.preferredFont(forTextStyle: .headline).withSize(48)
+        l.font = UIFont.preferredFont(forTextStyle: .headline).withSize(36)
         return l
     }()
     
@@ -58,14 +57,46 @@ class ProfileView: UIView {
         let l = UILabel()
         l.text = "Display Name"
         l.textAlignment = .center
-        l.font = UIFont.preferredFont(forTextStyle: .largeTitle).withSize(36)
+        l.font = UIFont.preferredFont(forTextStyle: .largeTitle).withSize(24)
         return l
     }()
     
     public lazy var cityLabel: UILabel = {
         let l = UILabel()
         l.text = "NYC"
-        l.textAlignment = .center
+        l.textAlignment = .right
+        l.font = l.font.withSize(24)
+        return l
+    }()
+    
+    private lazy var bioTitleLabel: UILabel = {
+        let l = UILabel()
+        l.text = "Bio"
+        l.font = UIFont.preferredFont(forTextStyle: .headline).withSize(36)
+        return l
+    }()
+    
+    public lazy var bioTextView: UITextView = {
+        let tv = UITextView()
+        tv.text = "iOS Developer, Peanut Allergenner.. or something."
+        tv.font = UIFont.preferredFont(forTextStyle: .body).withSize(18)
+        tv.backgroundColor = .clear
+        tv.isEditable = false
+        tv.isSelectable = false
+        return tv
+    }()
+    
+    private lazy var allergenTitleLabel: UILabel = {
+        let l = UILabel()
+        l.text = "Allergy"
+        l.font = UIFont.preferredFont(forTextStyle: .headline).withSize(36)
+        return l
+    }()
+    
+    public lazy var allergenLabel: UILabel = {
+        let l = UILabel()
+        l.text = "allergy"
+        l.textAlignment = .right
         l.font = l.font.withSize(24)
         return l
     }()
@@ -73,7 +104,7 @@ class ProfileView: UIView {
     private lazy var eventsLabel: UILabel = {
         let l = UILabel()
         l.text = "Events"
-        l.font = UIFont.preferredFont(forTextStyle: .headline).withSize(48)
+        l.font = UIFont.preferredFont(forTextStyle: .headline).withSize(36)
         return l
     }()
     
@@ -81,8 +112,8 @@ class ProfileView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .systemGroupedBackground
         cv.register(EventCell.self, forCellWithReuseIdentifier: "eventCell")
+        cv.backgroundColor = .clear
         return cv
     }()
     
@@ -104,6 +135,7 @@ class ProfileView: UIView {
         configureCardLayer()
         configureImageLayer()
         configureButtonLayer()
+        configureEditButtonLayer()
     }
     
     @objc
@@ -120,7 +152,7 @@ class ProfileView: UIView {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.bounds.width / 2
         imageView.layer.borderWidth = 2
-        imageView.layer.borderColor = UIColor.red.cgColor
+        imageView.layer.borderColor = UIColor.label.cgColor
     }
     
     fileprivate func configureCardLayer() {
@@ -131,7 +163,14 @@ class ProfileView: UIView {
         button.layer.masksToBounds = true
         button.layer.cornerRadius = button.bounds.width / 2
         button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.red.cgColor
+        button.layer.borderColor = UIColor.systemBlue.cgColor
+    }
+    
+    fileprivate func configureEditButtonLayer() {
+        editProfileButton.layer.masksToBounds = true
+        editProfileButton.layer.cornerRadius = 12
+        editProfileButton.layer.borderWidth = 2
+        editProfileButton.layer.borderColor = UIColor.systemBlue.cgColor
     }
     
     private func configureView() {
@@ -140,6 +179,10 @@ class ProfileView: UIView {
         setupDisplayLabel()
         setupTitleLabel()
         setupCityLabel()
+        setupBioTitleLabel()
+        setupBioTextView()
+        setupAllergenTitleLabel()
+        setupAllergenLabel()
         setupEventsLabel()
         setupCollectionView()
         setupButton()
@@ -152,8 +195,8 @@ class ProfileView: UIView {
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: cardView.topAnchor),
-            imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.175),
-            imageView.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.175)])
+            imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15),
+            imageView.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15)])
     }
     
     private func setupCardView() {
@@ -170,9 +213,9 @@ class ProfileView: UIView {
         cardView.addSubview(displayLabel)
         displayLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            displayLabel.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
-            displayLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            displayLabel.widthAnchor.constraint(equalToConstant: displayLabel.intrinsicContentSize.width)])
+            displayLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8),
+            displayLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 12),
+            displayLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)])
     }
     
     private func setupTitleLabel() {
@@ -190,14 +233,51 @@ class ProfileView: UIView {
         NSLayoutConstraint.activate([
             cityLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             cityLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            cityLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)])
+            cityLabel.trailingAnchor.constraint(equalTo: cardView.centerXAnchor)])
+    }
+    
+    private func setupBioTitleLabel() {
+        cardView.addSubview(bioTitleLabel)
+        bioTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bioTitleLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor),
+            bioTitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            bioTitleLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)])
+    }
+    
+    private func setupBioTextView() {
+        cardView.addSubview(bioTextView)
+        bioTextView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bioTextView.topAnchor.constraint(equalTo: bioTitleLabel.bottomAnchor, constant: 5),
+            bioTextView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8),
+            bioTextView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8),
+            bioTextView.heightAnchor.constraint(equalTo: cardView.heightAnchor, multiplier: 1 / 6)])
+    }
+    
+    private func setupAllergenTitleLabel() {
+        cardView.addSubview(allergenTitleLabel)
+        allergenTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            allergenTitleLabel.topAnchor.constraint(equalTo: bioTextView.bottomAnchor, constant: 5),
+            allergenTitleLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8),
+            allergenTitleLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)])
+    }
+    
+    private func setupAllergenLabel() {
+        cardView.addSubview(allergenLabel)
+        allergenLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            allergenLabel.topAnchor.constraint(equalTo: allergenTitleLabel.bottomAnchor),
+            allergenLabel.leadingAnchor.constraint(equalTo: allergenTitleLabel.leadingAnchor),
+            allergenLabel.trailingAnchor.constraint(equalTo: cityLabel.trailingAnchor)])
     }
     
     private func setupEventsLabel() {
         cardView.addSubview(eventsLabel)
         eventsLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            eventsLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor),
+            eventsLabel.topAnchor.constraint(equalTo: allergenLabel.bottomAnchor),
             eventsLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             eventsLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)])
     }
@@ -216,8 +296,8 @@ class ProfileView: UIView {
         addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            button.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
-            button.leadingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            button.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            button.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
             button.widthAnchor.constraint(equalToConstant: 30),
             button.heightAnchor.constraint(equalToConstant: 30)])
     }
@@ -227,7 +307,8 @@ class ProfileView: UIView {
         editProfileButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             editProfileButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            editProfileButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)])
+            editProfileButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            editProfileButton.widthAnchor.constraint(equalToConstant: editProfileButton.intrinsicContentSize.width + 5)])
     }
     
     

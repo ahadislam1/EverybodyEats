@@ -9,18 +9,33 @@
 import SwiftUI
 
 protocol EditProfileViewDelegate: AnyObject {
-    func didPressSaveButton(name: String?, city: String?)
+    func didPressSaveButton(name: String?, city: String?, bio: String?, allergy: String?)
 }
 
 struct EditProfileView: View {
+    
+    enum Allergen: String, CaseIterable {
+        case milk = "Milk"
+        case eggs = "Eggs"
+        case fish = "Fish"
+        case shellfish = "Shellfish"
+        case treenuts = "Tree Nuts"
+        case peanuts = "Peanuts"
+        case wheat = "Wheat"
+        case soy = "Soy"
+    }
+    
     @State private var displayName: String = ""
     @State private var city: String = ""
+    @State private var bio: String = ""
+    @State private var allergy = 1
+    private let allergies = Allergen.allCases.map { $0.rawValue }
     
     var dismiss: (() -> Void)?
     
     weak var delegate: EditProfileViewDelegate?
     
-        
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -38,6 +53,20 @@ struct EditProfileView: View {
                         HStack {
                             Text("City").padding(.trailing)
                             TextField("City", text: $city)
+                        }
+                    }
+                    Section {
+                        HStack {
+                            Text("Bio").padding(.trailing)
+                            TextField("Bio", text: $bio)
+                        }
+                    }
+                    Section {
+                        Picker("Allergies",
+                               selection: $allergy) {
+                                ForEach(0..<allergies.count) {
+                                    Text(self.allergies[$0]).tag($0)
+                                }
                         }
                     }
                 }
@@ -69,7 +98,7 @@ struct EditProfileView: View {
     init() {}
     
     private func saveButtonPressed() {
-        delegate?.didPressSaveButton(name: displayName, city: city)
+        delegate?.didPressSaveButton(name: displayName, city: city, bio: bio, allergy: allergies[allergy])
         self.dismiss?()
     }
 }

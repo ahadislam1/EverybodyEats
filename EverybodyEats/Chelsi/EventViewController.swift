@@ -7,92 +7,137 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class EventViewController: UIViewController {
-
+    
+    @IBOutlet weak var allergenCollectionView: UICollectionView!
+    
+    @IBOutlet weak var eventCollectionView: UICollectionView!
+    
+    private let databaseService = EventDataBaseService.helper
+    
+    private var listener: ListenerRegistration?
+    
+    private var refreshControl: UIRefreshControl!
+    
+    
+    var allergens = [ "Milk", "Eggs","Fish","Shellfish","Tree Nuts","Peanuts","Wheat","Soy","Other"]
+    
+    var userEvents = [Event]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-     configureCollectionView()
+        configureCollectionView()
+        
     }
     
     
-    private let eventFeedView = EventFeedView()
+    
+    private func configureCollectionView(){
+        eventCollectionView.delegate = self
+        eventCollectionView.dataSource = self
         
-        private var allergens = [String]()
-        
-        private var events = [String]() {
-            didSet{
-                DispatchQueue.main.async {
-                    self.eventFeedView.eventCollectionView.reloadData()
-                }
+    }
+    @IBAction func createEventButtonPressed(_ sender: UIBarButtonItem) {
+        present(CreateEventViewController(), animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+    }
+    
+    private func loadData() {
+        EventDataBaseService.helper.getEvents { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.showAlert(title: "Error", message: error.localizedDescription)
+            case .success(let events):
+                self?.userEvents = events
             }
         }
-                
-        
-        override func loadView() {
-            view = eventFeedView
-        }
-       
-        
-        
-        private func configureCollectionView() {
-            
-            
-            eventFeedView.eventCollectionView.register(EventCell.self, forCellWithReuseIdentifier: "eventCell")
-            eventFeedView.eventCollectionView.dataSource = self
-            eventFeedView.eventCollectionView.delegate = self
-            eventFeedView.allergenCollectionView.dataSource = self
-            
-        }
-        
-        // function for liking an event
-        
     }
+    
+    
+    
+}
 
-    extension EventViewController: UICollectionViewDataSource {
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            allergens.count
+extension EventViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == allergenCollectionView {
+            return allergens.count
+        } else {
+            return 4
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            
-            if collectionView == eventFeedView.allergenCollectionView {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "allergenCell", for: indexPath) as? AllergenCell else {
-                    // needs to be of type Allergen Cell
-                    fatalError("Unable to dequeue Allergy Cell")
-                }
-                let event = events[indexPath.row]
-                //TODO: Configure Cell`
-//                cell.configureCell(with: event)
-                
-                return cell
-            } else {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as? EventCell else {
-                    fatalError("Unable to dequeue Event Cell")
-                }
-                let event = events[indexPath.row]
-                //TODO: Configure Cell`
-//                cell.configureCell(with: event)
-                
-                return cell
-                
+        
+        if collectionView == allergenCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "allergenCell", for: indexPath) as? AllergenCell else {
+                // needs to be of type Allergen Cell
+                fatalError("Unable to dequeue Allergy Cell")
             }
+            let allergen = allergens[indexPath.row]
             
             
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as? EventCell else {
+                fatalError("Unable to dequeue Event Cell")
+            }
+            //      let event = userEvents[indexPath.row]
+            //        cell.configureCell(for: event)
+            
+            return cell
             
         }
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.height / 3)
+    }
+    
+}
 
-    extension EventViewController: UICollectionViewDelegateFlowLayout {
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let maxSize: CGSize = UIScreen.main.bounds.size // max width and height of device
-            let itemWidth: CGFloat = maxSize.width
-            let itemHeight: CGFloat = maxSize.height * 0.40 // 40% of the height of the device
-            return CGSize(width: itemWidth, height: itemHeight)
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        }
-    }
+//extension EventViewController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        10
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as? EventCell else {
+//            fatalError("error")
+//        }
+//        //cell.delegate = self
+//        //        cell.configureCell(for: usersEvents[indexPath.row])
+//        return cell
+//
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//        let interItemSpacing: CGFloat = 10 // space between items
+//
+//        let maxWidth = UIScreen.main.bounds.size.width // devices width
+//
+//        let numberOfItems: CGFloat = 1
+//
+//        let totalSpacing: CGFloat = numberOfItems * interItemSpacing
+//
+//        let itemWidth: CGFloat = maxWidth
+//
+//        return CGSize(width: itemWidth, height: itemWidth)
+//
+//
+//    }
+//
+//}
+//
+//

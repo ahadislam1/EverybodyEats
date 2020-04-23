@@ -52,7 +52,7 @@ class CreatePostViewController: UIViewController {
         // add long press gesture to itemImageView
         sharePostImageView.isUserInteractionEnabled = true
         sharePostImageView.addGestureRecognizer(longPressGesture)
-        
+        captionTextField.delegate = self
         
     }
     
@@ -88,7 +88,7 @@ class CreatePostViewController: UIViewController {
             return
         }
         
-        let user = User.jaheed
+        let user = User.ahad
         let id = UUID().uuidString
         StorageService.helper.uploadPhoto(id: id, experience: .post, imageURL: imageURL) { [weak self] result in
             switch result {
@@ -145,5 +145,12 @@ extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigatio
         self.imageURL = imageURL
         selectedImage = image
         dismiss(animated: true)
+    }
+}
+
+extension CreatePostViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

@@ -47,6 +47,10 @@ class FavoriteViewController: UIViewController {
         view = favoriteView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getFavorites()
+    }
+    
     @objc
     func presentDetails () {
         //TODO: Present a Detail View Controller.
@@ -97,6 +101,7 @@ extension FavoriteViewController: UICollectionViewDataSource {
             }
             let post = posts[indexPath.row]
             cell.configureCell(post: post)
+            cell.delegate = self
             return cell
         case .events:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as? ItemCell else {
@@ -137,4 +142,24 @@ extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
     
     
     
+}
+
+extension FavoriteViewController: PostFavoriteCellDelegate {
+    func didTapAllergy(cell: PostFavoriteCell, post: Post) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let unfavoriteAction = UIAlertAction(title: "Unfavorite", style: .destructive) { [weak self] (_) in
+            PostDatabaseService.helper.unfavoritePost(userID: User.jaheed.id, postID: post.id) { result in
+                switch result {
+                case .failure(let error):
+                    self?.showAlert(title: "Error", message: error.localizedDescription)
+                case .success:
+                    break
+                }
+            }
+        }
+        
+        alertController.addAction(unfavoriteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)    }
 }

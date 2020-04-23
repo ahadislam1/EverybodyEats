@@ -7,80 +7,33 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class EventCell: UICollectionViewCell {
     
+    @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var eventTitleLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var allergenLabel: UILabel!
     
+    private var event: Event!
     
-    public lazy var imageView: UIImageView = {
-        let image = UIImageView()
-        image.clipsToBounds = true
-        image.layer.cornerRadius = 10
-        image.image = UIImage(systemName: "photo")
-        return image
-    }()
+    public func configureCell(for post: Event) {
+     
+    }
     
-    public lazy var eventTitleLabel: UILabel = {
-      let label = UILabel()
-        return label
-    }()
-    
-    public lazy var dateLabel: UILabel = {
-         let label = UILabel()
-           return label
-       }()
-    
-    public lazy var timeLabel: UILabel = {
-         let label = UILabel()
-           return label
-       }()
-    
-    public lazy var favoriteButton: UIButton = {
-         let button = UIButton()
-        // button Image - unfilled heart
+    private func updateUI (imageURL: String, allergen: String, eventDate: String, eventTitle: String, eventLocation: String, eventTime: String){
         
-           return button
-       }()
-    
-    
-   
-    
-    private func commonInit() {
-    setupImageView()
-        setupFavoriteButton()
-        setupDateLabel()
-        setupTimeLabel()
-        
+        eventImageView.kf.indicatorType = .activity
+        eventImageView.kf.setImage(with: URL(string: imageURL))
+        eventTitleLabel.text = eventTitle
+        dateLabel.text = eventDate
+        allergenLabel.text = allergen
+        locationLabel.text = eventLocation
+        timeLabel.text = eventTime
     }
-    
-    private func setupImageView() {
-        addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([])
-    }
-    private func setupFavoriteButton() {
-        addSubview(favoriteButton)
-        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([])
-    }
-    private func setupEventTitleLabel() {
-        addSubview(eventTitleLabel)
-        eventTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([])
-    }
-    
-    private func setupDateLabel() {
-        addSubview(dateLabel)
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-NSLayoutConstraint.activate([])
-    }
-    private func setupTimeLabel() {
-        addSubview(timeLabel)
-        timeLabel.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([])
-    }
-    
-    
-    
     
 }

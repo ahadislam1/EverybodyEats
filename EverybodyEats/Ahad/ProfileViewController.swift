@@ -12,6 +12,8 @@ import Kingfisher
 
 class ProfileViewController: UIViewController {
     
+    let userId: String?
+    
     private lazy var profileView: ProfileView = {
         let pv = ProfileView()
         pv.collectionView.delegate = self
@@ -32,23 +34,60 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemTeal
-        getUser()
+        view.backgroundColor = .systemBackground
+        getUser(userId: userId)
     }
     
-    private func getUser() {
-        UserDatabaseService.helper.getUser(id: UserDatabaseService.testUserID) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let user):
-                if let urlString = user.photoURL, let url = URL(string: urlString) {
-                    self?.profileView.imageView.kf.setImage(with: url)
+    init() {
+        self.userId = nil
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(userId: String) {
+        self.userId = userId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func getUser(userId: String? = nil) {
+        
+        if let userId = userId {
+            profileView.editProfileButton.isHidden = true
+            profileView.button.isHidden = true
+            profileView.bioTextView.text = "Gluten-free and vegan."
+            print("this happened")
+            UserDatabaseService.helper.getUser(id: userId) { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let user):
+                    if let urlString = user.photoURL {
+                    self?.profileView.imageView.kf.setImage(with: URL(string: urlString))
+                    }
+                    self?.profileView.cityLabel.text = user.city
+                    self?.profileView.displayLabel.text = user.displayName
+                }
+            }
+        } else {
+            UserDatabaseService.helper.getUser(id: UserDatabaseService.testUserID) { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let user):
+                    if let urlString = user.photoURL, let url = URL(string: urlString) {
+                        self?.profileView.imageView.kf.setImage(with: url)
+                        self?.profileView.cityLabel.text = user.city
+                        self?.profileView.displayLabel.text = user.displayName
+
+                    }
                 }
             }
         }
     }
-
+    
 }
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -64,7 +103,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: view.frame.width / 2, height: view.frame.width / 2)
+        CGSize(width: view.frame.width / 4, height: view.frame.width / 4)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -87,11 +126,13 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
             let imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL else {
-            return
+                return
         }
         print(imageURL)
         profileView.imageView.image = image
-        UserDatabaseService.helper.updateUser(id: UserDatabaseService.testUserID, imageURL: imageURL) { result in
+        let jaheed = User.jaheed
+        let userid = UserDatabaseService.testUserID
+        UserDatabaseService.helper.updateUser(id: userid, imageURL: imageURL) { result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -115,21 +156,21 @@ extension ProfileViewController: ProfileViewDelegate {
     
     func didPressButton() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-               let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-               let cameraAction = UIAlertAction(title: "Camera", style: .default) { [weak self] _ in
-                   self?.showPicker(sourceType: .camera)
-               }
-               let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { [weak self] _ in
-                   self?.showPicker(sourceType: .photoLibrary)
-               }
-               
-               if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                   alertController.addAction(cameraAction)
-               }
-               
-               alertController.addAction(libraryAction)
-               alertController.addAction(cancelAction)
-               present(alertController, animated: true)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { [weak self] _ in
+            self?.showPicker(sourceType: .camera)
+        }
+        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { [weak self] _ in
+            self?.showPicker(sourceType: .photoLibrary)
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            alertController.addAction(cameraAction)
+        }
+        
+        alertController.addAction(libraryAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
     }
     
     private func showPicker(sourceType: UIImagePickerController.SourceType) {
@@ -141,8 +182,7 @@ extension ProfileViewController: ProfileViewDelegate {
 }
 
 extension ProfileViewController: EditProfileViewDelegate {
-    func didPressSaveButton(name: String?, city: String?) {
-        
+    func didPressSaveButton(name: String?, city: String?, bio: String?, allergy: String?) {
         var dict = [AnyHashable: Any]()
         
         if let name = name, !name.isEmpty {
@@ -155,6 +195,14 @@ extension ProfileViewController: EditProfileViewDelegate {
             dict["city"] = city
         }
         
+        if let bio = bio, !bio.isEmpty {
+            profileView.bioTextView.text = bio
+        }
+        
+        if let allergy = allergy, !allergy.isEmpty {
+            profileView.allergenLabel.text = allergy
+        }
+        
         UserDatabaseService.helper.updateUser(id: UserDatabaseService.testUserID, dict: dict) { result in
             switch result {
             case .failure(let error):
@@ -163,7 +211,6 @@ extension ProfileViewController: EditProfileViewDelegate {
                 print(bool)
             }
         }
-
     }
     
     
