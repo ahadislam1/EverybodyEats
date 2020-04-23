@@ -11,12 +11,21 @@ import Firebase
 
 /// A user-made object
 struct Post: Codable {
-    let id = UUID().uuidString
-    let imageData: String
+    let id: String
+    let imageURL: String
     let caption: String
     let userHandle: String
     let createdDate: Date
-    let likes = Like()
+    let like: Like
+    
+    init(imageURL: String, caption: String, userHandle: String) {
+        id = UUID().uuidString
+        createdDate = Date()
+        like = Like()
+        self.imageURL = imageURL
+        self.caption = caption
+        self.userHandle = userHandle
+    }
 }
 
 //extension Post {

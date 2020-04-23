@@ -24,7 +24,7 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var locationOnOffLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
-    private let dbService = PostDatabaseService()
+    private let dbService = PostDatabaseService.helper
     //private let storageService = StorageService()
     
     private lazy var imagePickerController: UIImagePickerController = {
@@ -88,9 +88,6 @@ class CreatePostViewController: UIViewController {
         
          // resize image before uploading to Storage
         let resizedImage = UIImage.resizeImage(originalImage: selectedImage, rect: sharePostImageView.bounds)
-        
-        
-        
         
     }
     
