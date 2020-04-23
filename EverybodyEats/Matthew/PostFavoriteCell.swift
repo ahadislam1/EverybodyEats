@@ -30,6 +30,10 @@ class PostFavoriteCell: UICollectionViewCell {
             allergenIndicatorIV.image = UIImage(named: "peanut")
         case Allergen.milk.rawValue:
             allergenIndicatorIV.image = UIImage(named: "milk")
+        case Allergen.treenuts.rawValue:
+            allergenIndicatorIV.image = UIImage(named: "treenut")
+        case Allergen.shellfish.rawValue:
+            allergenIndicatorIV.image = UIImage(named: "shellfish")
         default:
             allergenIndicatorIV.image = UIImage(named: "navImage")
         }
