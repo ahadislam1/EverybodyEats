@@ -56,6 +56,8 @@ class ProfileViewController: UIViewController {
         
         if let userId = userId {
             profileView.editProfileButton.isHidden = true
+            profileView.button.isHidden = true
+            profileView.bioTextView.text = "Gluten-free and vegan."
             print("this happened")
             UserDatabaseService.helper.getUser(id: userId) { [weak self] result in
                 switch result {
@@ -128,7 +130,9 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
         }
         print(imageURL)
         profileView.imageView.image = image
-        UserDatabaseService.helper.updateUser(id: UserDatabaseService.testUserID, imageURL: imageURL) { result in
+        let jaheed = User.jaheed
+        let userid = UserDatabaseService.testUserID
+        UserDatabaseService.helper.updateUser(id: userid, imageURL: imageURL) { result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)

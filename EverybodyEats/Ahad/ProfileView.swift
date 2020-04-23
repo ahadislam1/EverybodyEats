@@ -23,7 +23,7 @@ class ProfileView: UIView {
         return iv
     }()
     
-    private lazy var button: UIButton = {
+    public lazy var button: UIButton = {
         let b = UIButton()
         b.setImage(UIImage(systemName: "plus"), for: .normal)
         b.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
