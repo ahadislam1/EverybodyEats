@@ -12,6 +12,8 @@ import Kingfisher
 
 class ProfileViewController: UIViewController {
     
+    let userId: String?
+    
     private lazy var profileView: ProfileView = {
         let pv = ProfileView()
         pv.collectionView.delegate = self
@@ -36,14 +38,41 @@ class ProfileViewController: UIViewController {
         getUser()
     }
     
-    private func getUser() {
-        UserDatabaseService.helper.getUser(id: UserDatabaseService.testUserID) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let user):
-                if let urlString = user.photoURL, let url = URL(string: urlString) {
-                    self?.profileView.imageView.kf.setImage(with: url)
+    init() {
+        self.userId = nil
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(userId: String) {
+        self.userId = userId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func getUser(userId: String? = nil) {
+        if let userId = userId {
+            UserDatabaseService.helper.getUser(id: userId) { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let user):
+                    if let urlString = user.photoURL, let url = URL(string: urlString) {
+                        self?.profileView.imageView.kf.setImage(with: url)
+                    }
+                }
+            }
+        } else {
+            UserDatabaseService.helper.getUser(id: UserDatabaseService.testUserID) { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let user):
+                    if let urlString = user.photoURL, let url = URL(string: urlString) {
+                        self?.profileView.imageView.kf.setImage(with: url)
+                    }
                 }
             }
         }
