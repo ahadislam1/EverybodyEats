@@ -66,7 +66,10 @@ class EventCell: UICollectionViewCell {
     private func setupEventTitleLabel() {
         addSubview(eventTitleLabel)
         eventTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([])
+        NSLayoutConstraint.activate([
+            eventTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10), eventTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            eventTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10)
+        ])
     }
     
     private func setupDateLabel() {
@@ -80,6 +83,9 @@ NSLayoutConstraint.activate([])
     NSLayoutConstraint.activate([])
     }
     
+    public func configureCell(event: Event) {
+        eventTitleLabel.text = event.description
+    }
     
     
     
