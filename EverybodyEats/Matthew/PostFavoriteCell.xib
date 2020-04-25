@@ -67,15 +67,24 @@
                             <constraint firstAttribute="width" secondItem="BG9-fl-lLU" secondAttribute="height" multiplier="1:1" id="uyp-vX-PhJ"/>
                         </constraints>
                     </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Xh-Wj-Kmx">
+                        <rect key="frame" x="217.5" y="8" width="57" height="57.5"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hyi-3l-Sqb">
+                        <rect key="frame" x="160" y="8" width="57.5" height="57.5"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Klk-GE-1be" firstAttribute="top" secondItem="yCj-i3-KIt" secondAttribute="top" constant="8.5" id="0WD-mn-ebi"/>
                     <constraint firstAttribute="bottom" secondItem="cVr-Ud-HTH" secondAttribute="bottom" constant="21" id="1W7-BW-pYG"/>
                     <constraint firstItem="AYH-lN-eyM" firstAttribute="baseline" secondItem="fJE-ds-UZG" secondAttribute="baseline" id="2xy-Fe-daa"/>
+                    <constraint firstItem="hyi-3l-Sqb" firstAttribute="width" secondItem="2Xh-Wj-Kmx" secondAttribute="width" id="3f1-jK-V6p"/>
                     <constraint firstItem="AYH-lN-eyM" firstAttribute="top" secondItem="fJE-ds-UZG" secondAttribute="top" id="42J-ly-mbL"/>
                     <constraint firstItem="BG9-fl-lLU" firstAttribute="height" secondItem="yCj-i3-KIt" secondAttribute="height" multiplier="0.15" id="6GF-3B-Esk"/>
                     <constraint firstItem="fJE-ds-UZG" firstAttribute="leading" secondItem="AYH-lN-eyM" secondAttribute="trailing" constant="8" id="905-LE-kH3"/>
                     <constraint firstItem="AYH-lN-eyM" firstAttribute="leading" secondItem="ThL-GM-Mcz" secondAttribute="leading" id="AJc-zf-llm"/>
+                    <constraint firstItem="hyi-3l-Sqb" firstAttribute="height" secondItem="2Xh-Wj-Kmx" secondAttribute="height" id="Del-jW-3cT"/>
+                    <constraint firstItem="2Xh-Wj-Kmx" firstAttribute="leading" secondItem="hyi-3l-Sqb" secondAttribute="trailing" id="Hhk-8U-gIf"/>
                     <constraint firstItem="fJE-ds-UZG" firstAttribute="trailing" secondItem="ThL-GM-Mcz" secondAttribute="trailing" id="SLt-5H-0aR"/>
                     <constraint firstItem="AYH-lN-eyM" firstAttribute="centerY" secondItem="fJE-ds-UZG" secondAttribute="centerY" id="Ssw-Oc-6xF"/>
                     <constraint firstAttribute="trailing" secondItem="BG9-fl-lLU" secondAttribute="trailing" id="Tzc-6t-pLn"/>
@@ -84,13 +93,18 @@
                     <constraint firstItem="cVr-Ud-HTH" firstAttribute="top" secondItem="K3s-Lr-eL0" secondAttribute="bottom" constant="2" id="XO8-HC-ECn"/>
                     <constraint firstItem="Klk-GE-1be" firstAttribute="centerX" secondItem="ThL-GM-Mcz" secondAttribute="centerX" id="Zao-fh-F3h"/>
                     <constraint firstItem="fJE-ds-UZG" firstAttribute="trailing" secondItem="yCj-i3-KIt" secondAttribute="trailingMargin" id="dFO-wK-Alh"/>
+                    <constraint firstItem="2Xh-Wj-Kmx" firstAttribute="top" secondItem="yCj-i3-KIt" secondAttribute="top" constant="8" id="iMU-aA-XNU"/>
                     <constraint firstItem="AYH-lN-eyM" firstAttribute="top" secondItem="Klk-GE-1be" secondAttribute="bottom" constant="10" id="jXk-zd-Y00"/>
                     <constraint firstItem="Klk-GE-1be" firstAttribute="leading" secondItem="yCj-i3-KIt" secondAttribute="leading" id="k4R-qm-wsa"/>
                     <constraint firstItem="AYH-lN-eyM" firstAttribute="leading" secondItem="yCj-i3-KIt" secondAttribute="leadingMargin" id="kvQ-Gw-5tg"/>
                     <constraint firstItem="fJE-ds-UZG" firstAttribute="baseline" secondItem="AYH-lN-eyM" secondAttribute="firstBaseline" id="mim-Sy-eCY"/>
+                    <constraint firstItem="2Xh-Wj-Kmx" firstAttribute="width" secondItem="BG9-fl-lLU" secondAttribute="width" id="rgF-Ut-NgJ"/>
                     <constraint firstItem="ThL-GM-Mcz" firstAttribute="trailing" secondItem="K3s-Lr-eL0" secondAttribute="trailing" id="t1b-10-iyK"/>
                     <constraint firstItem="ThL-GM-Mcz" firstAttribute="leading" secondItem="K3s-Lr-eL0" secondAttribute="leading" id="t9E-I0-YHE"/>
                     <constraint firstItem="K3s-Lr-eL0" firstAttribute="trailing" secondItem="cVr-Ud-HTH" secondAttribute="trailing" id="tAP-LU-Vbo"/>
+                    <constraint firstItem="BG9-fl-lLU" firstAttribute="leading" secondItem="2Xh-Wj-Kmx" secondAttribute="trailing" id="uEg-bX-Dqv"/>
+                    <constraint firstItem="hyi-3l-Sqb" firstAttribute="top" secondItem="yCj-i3-KIt" secondAttribute="top" constant="8" id="ubo-x7-VW2"/>
+                    <constraint firstItem="2Xh-Wj-Kmx" firstAttribute="height" secondItem="BG9-fl-lLU" secondAttribute="height" id="vH8-MF-DeF"/>
                     <constraint firstItem="K3s-Lr-eL0" firstAttribute="leading" secondItem="cVr-Ud-HTH" secondAttribute="leading" id="y8S-9K-M0b"/>
                     <constraint firstItem="K3s-Lr-eL0" firstAttribute="top" secondItem="ThL-GM-Mcz" secondAttribute="bottom" constant="3" id="y9v-yQ-enw"/>
                 </constraints>
@@ -99,6 +113,8 @@
             <size key="customSize" width="332" height="382"/>
             <connections>
                 <outlet property="allergenIndicatorIV" destination="BG9-fl-lLU" id="Cav-DB-oAb"/>
+                <outlet property="allergenIndicatorIV2" destination="2Xh-Wj-Kmx" id="k9r-33-ruK"/>
+                <outlet property="allergenIndicatorIV3" destination="hyi-3l-Sqb" id="1Jz-UB-FMd"/>
                 <outlet property="captionLabel" destination="K3s-Lr-eL0" id="WgR-Zt-cD0"/>
                 <outlet property="datePostedLabel" destination="cVr-Ud-HTH" id="04b-bt-uIQ"/>
                 <outlet property="favoriteButton" destination="AYH-lN-eyM" id="zjS-Ux-5Rk"/>

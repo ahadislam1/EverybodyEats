@@ -21,6 +21,8 @@ class PostFavoriteCell: UICollectionViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var datePostedLabel: UILabel!
     @IBOutlet weak var allergenIndicatorIV: UIImageView!
+    @IBOutlet weak var allergenIndicatorIV2: UIImageView!
+    @IBOutlet weak var allergenIndicatorIV3: UIImageView!
     
     weak var delegate: PostFavoriteCellDelegate?
     
@@ -41,15 +43,16 @@ class PostFavoriteCell: UICollectionViewCell {
         userNameLabel.text = post.userHandle
         captionLabel.text = post.caption
         datePostedLabel.text = post.createdDate.dateString()
-        switch post.allergen.first {
-        case Allergen.peanuts.rawValue:
-            allergenIndicatorIV.image = UIImage(named: "peanut")
-        case Allergen.milk.rawValue:
-            allergenIndicatorIV.image = UIImage(named: "milk")
-        case Allergen.treenuts.rawValue:
-            allergenIndicatorIV.image = UIImage(named: "treenut")
-        case Allergen.shellfish.rawValue:
-            allergenIndicatorIV.image = UIImage(named: "shellfish")
+        switch post.allergen.count {
+        case 1:
+            allergenIndicatorIV.image = UIImage(named: post.allergen.first!)
+        case 2:
+            allergenIndicatorIV.image = UIImage(named: post.allergen.last!)
+            allergenIndicatorIV2.image = UIImage(named: post.allergen.first!)
+        case 3:
+            allergenIndicatorIV.image = UIImage(named: post.allergen.last!)
+            allergenIndicatorIV2.image = UIImage(named: post.allergen[2])
+            allergenIndicatorIV3.image = UIImage(named: post.allergen.first!)
         default:
             allergenIndicatorIV.image = UIImage(named: "navImage")
         }
