@@ -8,3 +8,8 @@ Technologies Used
 - Swift UI
 - Kingfisher
 - FirebaseStorage
+- FirebaseFirestoreSwift
+- FirebaseFirestore
+- MapKit (CreateViewController)
+- CoreLocation
+
