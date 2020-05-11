@@ -2,7 +2,7 @@
 hackathon
 
 # Description
-Everybody Eats aims to connect users with similar food restrictions.
+Everybody Eats aims to create a community where users with similar food allergies can share their experiences and detail so of allergen friendly events. 
 
 What users can do 
 - Create and customize user profile
