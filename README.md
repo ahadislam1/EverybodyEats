@@ -1,5 +1,7 @@
 # EverybodyEats
 
+![](Images/EElogo.png)
+
 # Description
 Everybody Eats aims to create a community where users with similar food allergies can share their experiences and details of allergen friendly events. 
 
