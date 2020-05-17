@@ -35,6 +35,8 @@
 		0BCADC15244E8462002EB913 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC14244E8462002EB913 /* Event.swift */; };
 		0BCADC17244E84F8002EB913 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC16244E84F8002EB913 /* Post.swift */; };
 		0BCADC19244E8575002EB913 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC18244E8575002EB913 /* Like.swift */; };
+		0BF543EF247180430003A2E6 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF543EE247180430003A2E6 /* FirestoreService.swift */; };
+		0BF543F1247182A80003A2E6 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF543F0247182A80003A2E6 /* AuthService.swift */; };
 		0BF972442451DBD200246DD6 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF972432451DBD200246DD6 /* UIColor+Hex.swift */; };
 		0C919F6A244E72BB00826E45 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F69244E72BB00826E45 /* FavoriteView.swift */; };
 		0C919F6E244E770100826E45 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F6D244E770100826E45 /* ItemCell.xib */; };
@@ -98,6 +100,8 @@
 		0BCADC14244E8462002EB913 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0BCADC16244E84F8002EB913 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0BCADC18244E8575002EB913 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		0BF543EE247180430003A2E6 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		0BF543F0247182A80003A2E6 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		0BF972432451DBD200246DD6 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		0C919F69244E72BB00826E45 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		0C919F6D244E770100826E45 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
@@ -227,8 +231,10 @@
 			children = (
 				0B87C0A22451FEAF007793EB /* EventDataBaseService.swift */,
 				30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */,
+				0BF543EE247180430003A2E6 /* FirestoreService.swift */,
 				0B5055CD2450CAE500C41E12 /* StorageService.swift */,
 				0B5055CF2450E58800C41E12 /* UserDatabaseService.swift */,
+				0BF543F0247182A80003A2E6 /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -467,6 +473,7 @@
 				303A170424508DCA00587485 /* UIImage+ResizeImage.swift in Sources */,
 				0B87C0A52451FEAF007793EB /* CreateEventViewController.swift in Sources */,
 				30DE01A7244EB56700BD5194 /* PostCell.swift in Sources */,
+				0BF543F1247182A80003A2E6 /* AuthService.swift in Sources */,
 				0B5055D02450E58800C41E12 /* UserDatabaseService.swift in Sources */,
 				0B712A73244DEB94004FD62B /* FeedViewController.swift in Sources */,
 				0BCADC17244E84F8002EB913 /* Post.swift in Sources */,
@@ -485,6 +492,7 @@
 				30DE01A5244EAB3C00BD5194 /* (null) in Sources */,
 				0B5055CE2450CAE500C41E12 /* StorageService.swift in Sources */,
 				0B712A6F244DEB94004FD62B /* AppDelegate.swift in Sources */,
+				0BF543EF247180430003A2E6 /* FirestoreService.swift in Sources */,
 				0BCADC13244E8307002EB913 /* User.swift in Sources */,
 				0B87C0A92451FEAF007793EB /* EventViewController.swift in Sources */,
 				0C919F822451595800826E45 /* Allergen.swift in Sources */,

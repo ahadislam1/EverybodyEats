@@ -12,8 +12,16 @@ import FirebaseFirestoreSwift
 
 class FirestoreService {
     
+    /// An enum to streamline choosing which collection you'd like to access.
+    enum CollectionExperience: String {
+        case users
+        case events
+        case posts
+    }
+    
     static let usersCollection = "users"
     static let eventsCollection = "events"
+    static let postsCollection = "posts"
     
     static let helper = FirestoreService()
 
@@ -21,7 +29,8 @@ class FirestoreService {
     
     private init() {}
     
-    public func createItem<T: Codable>(item: T, completion: @escaping(Result<Void, Error>) -> ()) {
+    public func createItem<T: Codable & Identifiable>(item: T, experience: CollectionExperience, completion: @escaping(Result<Void, Error>) -> ()) {
+        
         
     }
 }
