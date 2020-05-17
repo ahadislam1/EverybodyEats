@@ -47,10 +47,25 @@ class FirestoreService {
         }
     }
     
-    public func loadItems<T: Codable & Identification>(experience: CollectionExperience, completion: @escaping (Result<[T], Error>) -> ()) {
+    public func loadItems<T: Codable & Identification>(type: T.Type, experience: CollectionExperience, completion: @escaping (Result<[T], Error>) -> ()) {
         
+        let docRef = db.collection(experience.rawValue)
         
+        docRef.getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else if let snapshot = snapshot {
+                let items = snapshot.documents.compactMap {
+                    return try? $0.data(as: T.self)
+                }
+                completion(.success(items))
+            }
+        }
     }
+    
+    /**
+     TODO: Making a better listener, currently what we have is ok but we can do better.
+     */
     
     /**
      TODO: Make a favoriting feature.  Our current implementation just sets data to a new document; however what we really need is a reference to the document (item).
