@@ -35,6 +35,9 @@
 		0BCADC15244E8462002EB913 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC14244E8462002EB913 /* Event.swift */; };
 		0BCADC17244E84F8002EB913 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC16244E84F8002EB913 /* Post.swift */; };
 		0BCADC19244E8575002EB913 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCADC18244E8575002EB913 /* Like.swift */; };
+		0BF543EF247180430003A2E6 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF543EE247180430003A2E6 /* FirestoreService.swift */; };
+		0BF543F1247182A80003A2E6 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF543F0247182A80003A2E6 /* AuthService.swift */; };
+		0BF543F3247188900003A2E6 /* Identification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF543F2247188900003A2E6 /* Identification.swift */; };
 		0BF972442451DBD200246DD6 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF972432451DBD200246DD6 /* UIColor+Hex.swift */; };
 		0C919F6A244E72BB00826E45 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C919F69244E72BB00826E45 /* FavoriteView.swift */; };
 		0C919F6E244E770100826E45 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C919F6D244E770100826E45 /* ItemCell.xib */; };
@@ -98,6 +101,9 @@
 		0BCADC14244E8462002EB913 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0BCADC16244E84F8002EB913 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0BCADC18244E8575002EB913 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		0BF543EE247180430003A2E6 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		0BF543F0247182A80003A2E6 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		0BF543F2247188900003A2E6 /* Identification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identification.swift; sourceTree = "<group>"; };
 		0BF972432451DBD200246DD6 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		0C919F69244E72BB00826E45 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		0C919F6D244E770100826E45 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
@@ -138,63 +144,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B096611244E2F8500FB4A68 /* Jaheed */ = {
-			isa = PBXGroup;
-			children = (
-				30A8852E244FCBF600B582C0 /* UIAlertController+ShowAlert.swift */,
-				303A170324508DCA00587485 /* UIImage+ResizeImage.swift */,
-				303A17052450D4B800587485 /* Date+Extention.swift */,
-				30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */,
-				0B712A72244DEB94004FD62B /* FeedViewController.swift */,
-				0B09660F244E29ED00FB4A68 /* CreatePostViewController.swift */,
-				30DE01A6244EB56700BD5194 /* PostCell.swift */,
-				30584AE0244FA634009225FD /* PostSB.storyboard */,
-			);
-			path = Jaheed;
-			sourceTree = "<group>";
-		};
-		0B096612244E2F9200FB4A68 /* Chelsi */ = {
-			isa = PBXGroup;
-			children = (
-				0B87C09E2451FEAF007793EB /* AllergenCell.swift */,
-				0B87C09D2451FEAF007793EB /* CreateEventViewController.swift */,
-				0B87C09C2451FEAE007793EB /* EventCell.swift */,
-				0B87C0A22451FEAF007793EB /* EventDataBaseService.swift */,
-				0B87C09F2451FEAF007793EB /* EventDetailView.swift */,
-				0B87C0A32451FEAF007793EB /* EventDetailViewController.swift */,
-				0B87C0A02451FEAF007793EB /* EventSB.storyboard */,
-				0B87C0A12451FEAF007793EB /* EventViewController.swift */,
-			);
-			path = Chelsi;
-			sourceTree = "<group>";
-		};
-		0B096613244E2F9B00FB4A68 /* Matthew */ = {
-			isa = PBXGroup;
-			children = (
-				0B09660D244E29C600FB4A68 /* FavoriteViewController.swift */,
-				0C919F69244E72BB00826E45 /* FavoriteView.swift */,
-				0C919F6D244E770100826E45 /* ItemCell.xib */,
-				0C919F6F244E823100826E45 /* ItemCell.swift */,
-				0C919F792450C85600826E45 /* PostFavoriteCell.xib */,
-				0C919F7B2450CDD300826E45 /* PostFavoriteCell.swift */,
-			);
-			path = Matthew;
-			sourceTree = "<group>";
-		};
-		0B096614244E2FA400FB4A68 /* Ahad */ = {
-			isa = PBXGroup;
-			children = (
-				0B096609244E298700FB4A68 /* ProfileViewController.swift */,
-				0B096615244E3F8600FB4A68 /* ProfileView.swift */,
-				0B5055CD2450CAE500C41E12 /* StorageService.swift */,
-				0B7EF19F244FE3E8004A06E8 /* EditProfileView.swift */,
-				0B5055CF2450E58800C41E12 /* UserDatabaseService.swift */,
-				0BF972432451DBD200246DD6 /* UIColor+Hex.swift */,
-				0B096617244E51D400FB4A68 /* TitleReusableView.swift */,
-			);
-			path = Ahad;
-			sourceTree = "<group>";
-		};
 		0B712A62244DEB94004FD62B = {
 			isa = PBXGroup;
 			children = (
@@ -219,21 +168,17 @@
 			isa = PBXGroup;
 			children = (
 				0B87C0982451FCEA007793EB /* GoogleService-Info.plist */,
+				0B712A7C244DEB97004FD62B /* Info.plist */,
 				0B712A6E244DEB94004FD62B /* AppDelegate.swift */,
 				0B712A70244DEB94004FD62B /* SceneDelegate.swift */,
-				0B096611244E2F8500FB4A68 /* Jaheed */,
-				0B096612244E2F9200FB4A68 /* Chelsi */,
-				0B096613244E2F9B00FB4A68 /* Matthew */,
-				0B096614244E2FA400FB4A68 /* Ahad */,
-				0B096607244E297600FB4A68 /* TabController.swift */,
 				0B712A77244DEB97004FD62B /* Assets.xcassets */,
-				0B712A79244DEB97004FD62B /* LaunchScreen.storyboard */,
-				0B712A7C244DEB97004FD62B /* Info.plist */,
-				0BCADC12244E8307002EB913 /* User.swift */,
-				0BCADC14244E8462002EB913 /* Event.swift */,
-				0BCADC16244E84F8002EB913 /* Post.swift */,
-				0BCADC18244E8575002EB913 /* Like.swift */,
-				0C919F812451595800826E45 /* Allergen.swift */,
+				0BF543EB24717F7C0003A2E6 /* Cells */,
+				0BF543E924717F3B0003A2E6 /* Controllers */,
+				0BF543E724717EF00003A2E6 /* Extensions */,
+				0BF543ED24717FA00003A2E6 /* Models */,
+				0BF543EA24717F600003A2E6 /* Services */,
+				0BF543E824717F1E0003A2E6 /* Storyboards */,
+				0BF543EC24717F880003A2E6 /* Views */,
 			);
 			path = EverybodyEats;
 			sourceTree = "<group>";
@@ -245,6 +190,94 @@
 				0B712A87244DEB97004FD62B /* Info.plist */,
 			);
 			path = EverybodyEatsTests;
+			sourceTree = "<group>";
+		};
+		0BF543E724717EF00003A2E6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				303A17052450D4B800587485 /* Date+Extention.swift */,
+				30A8852E244FCBF600B582C0 /* UIAlertController+ShowAlert.swift */,
+				0BF972432451DBD200246DD6 /* UIColor+Hex.swift */,
+				303A170324508DCA00587485 /* UIImage+ResizeImage.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0BF543E824717F1E0003A2E6 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0B87C0A02451FEAF007793EB /* EventSB.storyboard */,
+				0B712A79244DEB97004FD62B /* LaunchScreen.storyboard */,
+				30584AE0244FA634009225FD /* PostSB.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0BF543E924717F3B0003A2E6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0B87C09D2451FEAF007793EB /* CreateEventViewController.swift */,
+				0B09660F244E29ED00FB4A68 /* CreatePostViewController.swift */,
+				0B87C0A32451FEAF007793EB /* EventDetailViewController.swift */,
+				0B87C0A12451FEAF007793EB /* EventViewController.swift */,
+				0B09660D244E29C600FB4A68 /* FavoriteViewController.swift */,
+				0B712A72244DEB94004FD62B /* FeedViewController.swift */,
+				0B096609244E298700FB4A68 /* ProfileViewController.swift */,
+				0B096607244E297600FB4A68 /* TabController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0BF543EA24717F600003A2E6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0B87C0A22451FEAF007793EB /* EventDataBaseService.swift */,
+				30A8852C244FBA8400B582C0 /* PostDatabaseService.swift */,
+				0BF543EE247180430003A2E6 /* FirestoreService.swift */,
+				0B5055CD2450CAE500C41E12 /* StorageService.swift */,
+				0B5055CF2450E58800C41E12 /* UserDatabaseService.swift */,
+				0BF543F0247182A80003A2E6 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0BF543EB24717F7C0003A2E6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0B87C09E2451FEAF007793EB /* AllergenCell.swift */,
+				0B87C09C2451FEAE007793EB /* EventCell.swift */,
+				0C919F6F244E823100826E45 /* ItemCell.swift */,
+				0C919F6D244E770100826E45 /* ItemCell.xib */,
+				30DE01A6244EB56700BD5194 /* PostCell.swift */,
+				0C919F7B2450CDD300826E45 /* PostFavoriteCell.swift */,
+				0C919F792450C85600826E45 /* PostFavoriteCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0BF543EC24717F880003A2E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0B7EF19F244FE3E8004A06E8 /* EditProfileView.swift */,
+				0B87C09F2451FEAF007793EB /* EventDetailView.swift */,
+				0C919F69244E72BB00826E45 /* FavoriteView.swift */,
+				0B096615244E3F8600FB4A68 /* ProfileView.swift */,
+				0B096617244E51D400FB4A68 /* TitleReusableView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0BF543ED24717FA00003A2E6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0C919F812451595800826E45 /* Allergen.swift */,
+				0BCADC14244E8462002EB913 /* Event.swift */,
+				0BCADC18244E8575002EB913 /* Like.swift */,
+				0BCADC16244E84F8002EB913 /* Post.swift */,
+				0BCADC12244E8307002EB913 /* User.swift */,
+				0BF543F2247188900003A2E6 /* Identification.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E296711989EBD0A1454E6305 /* Pods */ = {
@@ -443,8 +476,10 @@
 				303A170424508DCA00587485 /* UIImage+ResizeImage.swift in Sources */,
 				0B87C0A52451FEAF007793EB /* CreateEventViewController.swift in Sources */,
 				30DE01A7244EB56700BD5194 /* PostCell.swift in Sources */,
+				0BF543F1247182A80003A2E6 /* AuthService.swift in Sources */,
 				0B5055D02450E58800C41E12 /* UserDatabaseService.swift in Sources */,
 				0B712A73244DEB94004FD62B /* FeedViewController.swift in Sources */,
+				0BF543F3247188900003A2E6 /* Identification.swift in Sources */,
 				0BCADC17244E84F8002EB913 /* Post.swift in Sources */,
 				0BCADC15244E8462002EB913 /* Event.swift in Sources */,
 				0BCADC19244E8575002EB913 /* Like.swift in Sources */,
@@ -461,6 +496,7 @@
 				30DE01A5244EAB3C00BD5194 /* (null) in Sources */,
 				0B5055CE2450CAE500C41E12 /* StorageService.swift in Sources */,
 				0B712A6F244DEB94004FD62B /* AppDelegate.swift in Sources */,
+				0BF543EF247180430003A2E6 /* FirestoreService.swift in Sources */,
 				0BCADC13244E8307002EB913 /* User.swift in Sources */,
 				0B87C0A92451FEAF007793EB /* EventViewController.swift in Sources */,
 				0C919F822451595800826E45 /* Allergen.swift in Sources */,
