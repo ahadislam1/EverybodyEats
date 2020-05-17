@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -29,8 +30,33 @@ class FirestoreService {
     
     private init() {}
     
-    public func createItem<T: Codable & Identifiable>(item: T, experience: CollectionExperience, completion: @escaping(Result<Void, Error>) -> ()) {
+    public func createItem<T: Codable & Identification>(item: T, experience: CollectionExperience, completion: @escaping(Result<Void, Error>) -> ()) {
+        
+        let docRef = db.collection(experience.rawValue).document(item.id)
+        
+        do {
+            try docRef.setData(from: item) { error in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(()))
+                }
+            }
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    
+    public func loadItems<T: Codable & Identification>(experience: CollectionExperience, completion: @escaping (Result<[T], Error>) -> ()) {
         
         
     }
+    
+    /**
+     TODO: Make a favoriting feature.  Our current implementation just sets data to a new document; however what we really need is a reference to the document (item).
+     Relevant information on the topic can be found here:
+     https://firebase.google.com/docs/reference/swift/firebasefirestore/api/reference/Classes/DocumentReference
+     */
+    
+    
 }

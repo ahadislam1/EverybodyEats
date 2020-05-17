@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 /// A user-made object
-struct Post: Codable {
+struct Post: Codable, Identification {
     let id: String
     let imageURL: String
     let caption: String

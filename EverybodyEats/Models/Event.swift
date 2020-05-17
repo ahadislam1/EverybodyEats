@@ -9,7 +9,7 @@
 import Foundation
 
 /// A user made-event, for something.
-struct Event: Codable {
+struct Event: Codable, Identification {
     let id: String
     let imageURL: String
     let description: String

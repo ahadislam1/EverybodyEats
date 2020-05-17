@@ -9,7 +9,7 @@
 import Foundation
 
 /// This struct is meant as a dummy for now.
-struct User: Codable {
+struct User: Codable, Identification {
     let id: String
     let displayName: String
     let city: String
